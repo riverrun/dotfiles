@@ -18,7 +18,7 @@ cp zsh/.zshrc ~/.zshrc
 # Copy zsh config files to zsh config directory
 [[ -d ~/.config/zsh ]] || mkdir -p ~/.config/zsh
 rm -rf ~/.config/zsh/*
-cp -r zsh/lib zsh/plugins ~/.config/zsh
+cp zsh/*.zsh zsh/*.zsh-theme ~/.config/zsh
 
 # Set up pathogen
 [[ -d ~/.vim ]] || mkdir ~/.vim
