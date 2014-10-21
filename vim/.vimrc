@@ -102,7 +102,7 @@ if has("autocmd")
   au BufNewFile,BufRead *.pl set filetype=prolog
 
   " html and xml files
-  autocmd FileType html,htmldjango,mason,xhtml,xml setlocal shiftwidth=2 softtabstop=2
+  autocmd FileType html,htmldjango,html.handlebars,xhtml,xml setlocal shiftwidth=2 softtabstop=2
 
   " elixir and nim files
   autocmd FileType elixir,nim setlocal shiftwidth=2 softtabstop=2

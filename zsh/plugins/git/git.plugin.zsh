@@ -5,14 +5,15 @@ alias gst='git status'
 compdef _git gst=git-status
 alias gd='git diff'
 compdef _git gd=git-diff
-alias gl='git pull'
-compdef _git gl=git-pull
-alias gp='git push'
-compdef _git gp=git-push
 alias gcm='git commit -a -m'
 compdef _git gcmsg=git-commit
 alias gco='git checkout'
 compdef _git gco=git-checkout
+alias ga='git add -A'
+compdef _git ga=git-add
+alias gm='git merge'
+compdef _git gm=git-merge
+alias grh='git reset HEAD --hard'
 alias gr='git remote'
 compdef _git gr=git-remote
 alias grv='git remote -v'
@@ -50,13 +51,6 @@ alias glo='git log --oneline --decorate --color'
 compdef _git glo=git-log
 alias glog='git log --oneline --decorate --color --graph'
 compdef _git glog=git-log
-alias gss='git status -s'
-compdef _git gss=git-status
-alias ga='git add'
-compdef _git ga=git-add
-alias gm='git merge'
-compdef _git gm=git-merge
-alias grh='git reset HEAD --hard'
 
 function current_branch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || \
@@ -71,12 +65,12 @@ function current_repository() {
 }
 
 # these aliases take advantage of the previous function
-alias ggpull='git pull origin $(current_branch)'
-compdef ggpull=git
+alias gl='git pull origin $(current_branch)'
+compdef gl=git
 alias ggpur='git pull --rebase origin $(current_branch)'
 compdef ggpur=git
-alias ggpush='git push origin $(current_branch)'
-compdef ggpush=git
+alias gp='git push origin $(current_branch)'
+compdef gp=git
 alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
 compdef ggpnp=git
 
