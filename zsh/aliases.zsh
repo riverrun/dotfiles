@@ -1,6 +1,4 @@
-# Change background of terminal
-alias lbg='xrdb -merge $HOME/.config/xresources/lightsolarized'
-alias dbg='xrdb -merge $HOME/.config/xresources/darksolarized'
+# startx
 alias xx=startx
 
 # Push and pop directories on directory stack
