@@ -4,14 +4,6 @@
 # Copy .vimrc to home directory
 cp vim/.vimrc ~/.vimrc
 
-# Copy .Xresources to home directory
-cp xresources/.Xresources ~/.Xresources
-
-# Copy light and dark solarized themes to xresources config directory
-[[ -d ~/.config/xresources ]] || mkdir -p ~/.config/xresources
-rm -rf ~/.config/xresources/*
-cp xresources/lightsolarized xresources/darksolarized ~/.config/xresources
-
 # Copy .zshrc to home directory
 cp zsh/.zshrc ~/.zshrc
 
@@ -34,6 +26,4 @@ cd ~/.vim/bundle
 git clone https://github.com/mkitt/tabline.vim.git
 git clone https://github.com/scrooloose/syntastic.git
 git clone https://github.com/altercation/vim-colors-solarized.git
-git clone https://github.com/mustache/vim-mustache-handlebars.git
 git clone https://github.com/elixir-lang/vim-elixir.git
-git clone https://github.com/zah/nimrod.vim.git
