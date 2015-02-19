@@ -98,11 +98,8 @@ if has("autocmd")
   augroup vimrcEx
   au!
 
-  " set filetype to prolog for files ending in pl
-  au BufNewFile,BufRead *.pl set filetype=prolog
-
-  " html and xml files
-  autocmd FileType html,htmldjango,html.handlebars,xhtml,xml setlocal shiftwidth=2 softtabstop=2
+  " html, xml, etc files
+  autocmd FileType html,htmldjango,css,less,xhtml,xml setlocal shiftwidth=2 softtabstop=2
 
   " elixir and nim files
   autocmd FileType elixir,nim setlocal shiftwidth=2 softtabstop=2

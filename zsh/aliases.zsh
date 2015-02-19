@@ -1,6 +1,3 @@
-# startx
-alias xx=startx
-
 # Push and pop directories on directory stack
 alias pu='pushd'
 alias po='popd'
@@ -50,8 +47,15 @@ alias g1='cd /data/develop/python/genxword/'
 alias g2='cd /data/develop/python/cheesemaker/'
 alias g3='cd /data/develop/python/drat/'
 alias g4='cd /data/develop/python/aiourlstatus/'
-alias ge1='cd /data/develop/elixir/parse_elixir_client/'
-alias gn1='cd /data/develop/nim/nimcodetools/'
+alias g5='cd /data/develop/python/web/uni-website/'
+alias ge1='cd /data/develop/elixir/comeonin/'
+alias ge2='cd /data/develop/elixir/parse_elixir_client/'
+
+# python tests
+alias pytest='python -m unittest tests/*.py'
+
+# upgrade all pip packages
+alias upgradepip='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U'
 
 # Miscellaneous
 alias bc='bc -l'
