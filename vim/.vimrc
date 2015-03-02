@@ -29,8 +29,16 @@ call togglebg#map("<F5>")
 " Remap Ctrl-z to escape
 map <C-z> <Esc>
 
+" change the mapleader from \ to ,
+let mapleader=","
+
+" Easy buffer navigation
+nmap <leader>e :edit<Space>
+nnoremap <silent> <tab> :bnext<CR>
+nnoremap <silent> <s-tab> :bprevious<CR>
+
 " Easy tab navigation
-nnoremap tt :tabedit<Space>
+nmap <leader>t :tabedit<Space>
 map <C-h> gT
 map <C-l> gt
 
