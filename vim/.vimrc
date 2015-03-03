@@ -37,6 +37,10 @@ nmap <leader>e :edit<Space>
 nnoremap <silent> <tab> :bnext<CR>
 nnoremap <silent> <s-tab> :bprevious<CR>
 
+" Split screens
+nmap <leader>s :split<Space>
+nmap <leader>v :vsplit<Space>
+
 " Easy tab navigation
 nmap <leader>t :tabedit<Space>
 map <C-h> gT
