@@ -15,6 +15,14 @@ set nocompatible
 " Use pathogen to manage plugins
 execute pathogen#infect()
 
+" CtrlP settings
+let g:ctrlp_map = '<C-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+    \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+\}
+
 " Syntastic options
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_python_checkers = ['pyflakes']
@@ -40,11 +48,6 @@ nnoremap <silent> <s-tab> :bprevious<CR>
 " Split screens
 nmap <leader>s :split<Space>
 nmap <leader>v :vsplit<Space>
-
-" Easy tab navigation
-nmap <leader>t :tabedit<Space>
-map <C-h> gT
-map <C-l> gt
 
 " Easy window navigation
 map <C-j> <C-w>w
