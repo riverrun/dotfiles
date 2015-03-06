@@ -15,14 +15,6 @@ set nocompatible
 " Use pathogen to manage plugins
 execute pathogen#infect()
 
-" CtrlP settings
-let g:ctrlp_map = '<C-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
-    \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-\}
-
 " Syntastic options
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_python_checkers = ['pyflakes']
@@ -37,11 +29,16 @@ call togglebg#map("<F5>")
 " Remap Ctrl-z to escape
 map <C-z> <Esc>
 
-" change the mapleader from \ to ,
+" Change the mapleader from \ to ,
 let mapleader=","
+
+" Open netrw file explorer
+map <leader>f :Explore<cr>
+let g:netrw_liststyle=3
 
 " Easy buffer navigation
 nmap <leader>e :edit<Space>
+nnoremap <leader>l :buffers<CR>:buffer<Space>
 nnoremap <silent> <tab> :bnext<CR>
 nnoremap <silent> <s-tab> :bprevious<CR>
 
@@ -121,9 +118,6 @@ if has("autocmd")
 
   " c files
   autocmd FileType c setlocal softtabstop=8 shiftwidth=8 noexpandtab
-
-  " Folding for python files
-  autocmd FileType python setlocal foldmethod=indent foldnestmax=2
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
