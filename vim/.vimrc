@@ -26,8 +26,11 @@ set background=dark
 colorscheme solarized
 call togglebg#map("<F5>")
 
-" Remap Ctrl-z to escape
-map <C-z> <Esc>
+" Map semi-colon to colon to make ex commands easier to type
+nmap ; :
+
+" Remap Ctrl-z to save all files and exit
+map <C-z> :xa<CR>
 
 " Change the mapleader from \ to ,
 let mapleader=","
@@ -45,15 +48,14 @@ nnoremap <silent> <s-tab> :bprevious<CR>
 " Split screens
 nmap <leader>s :split<Space>
 nmap <leader>v :vsplit<Space>
+map + 10<C-w>+
+map - 10<C-w>-
+map <C-n> 20<C-w><
+map <C-m> 20<C-w>>
 
 " Easy window navigation
 map <C-j> <C-w>w
-
-" Easier moving and scrolling
-nnoremap J 10j
-nnoremap K 10k
-nnoremap L 30j
-nnoremap H 30k
+map <C-k> <C-w>W
 
 " Save options
 nnoremap gs :w<CR>

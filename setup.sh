@@ -23,7 +23,6 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 [[ -d ~/.vim/bundle ]] || mkdir ~/.vim/bundle
 rm -rf ~/.vim/bundle/*
 cd ~/.vim/bundle
-git clone https://github.com/mkitt/tabline.vim.git
 git clone https://github.com/scrooloose/syntastic.git
 git clone https://github.com/altercation/vim-colors-solarized.git
 git clone https://github.com/elixir-lang/vim-elixir.git
