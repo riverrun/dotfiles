@@ -3,11 +3,6 @@
 " Use 256 colors
 set t_Co=256
 
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -26,24 +21,22 @@ set background=dark
 colorscheme solarized
 call togglebg#map("<F5>")
 
-" Map semi-colon to colon to make ex commands easier to type
-nmap ; :
-
 " Remap Ctrl-z to save all files and exit
 map <C-z> :xa<CR>
 
-" Change the mapleader from \ to ,
-let mapleader=","
+" Change the mapleader from \ to space
+let mapleader="\<Space>"
 
 " Open netrw file explorer
 map <leader>f :Explore<cr>
 let g:netrw_liststyle=3
 
-" Easy buffer navigation
+" Easier buffer navigation
 nmap <leader>e :edit<Space>
 nnoremap <leader>l :buffers<CR>:buffer<Space>
 nnoremap <silent> <tab> :bnext<CR>
 nnoremap <silent> <s-tab> :bprevious<CR>
+nmap <leader>a <C-^>
 
 " Split screens
 nmap <leader>s :split<Space>
@@ -53,16 +46,13 @@ map - 10<C-w>-
 map <C-n> 20<C-w><
 map <C-m> 20<C-w>>
 
-" Easy window navigation
+" Easier window navigation
 map <C-j> <C-w>w
 map <C-k> <C-w>W
 
 " Save options
 nnoremap gs :w<CR>
 nnoremap ga :wa<CR>
-
-" Folding
-nnoremap <space> za
 
 " Visual mode deleting into black hole and pasting from register
 vmap r "_dP
