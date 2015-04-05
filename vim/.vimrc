@@ -34,8 +34,8 @@ let g:netrw_liststyle=3
 " Easier buffer navigation
 nmap <leader>e :edit<Space>
 nnoremap <leader>l :buffers<CR>:buffer<Space>
-nnoremap <silent> <tab> :if &modified <CR>:write<CR> :endif<CR>:bnext<CR>
-nnoremap <silent> <s-tab> :if &modified <CR>:write<CR> :endif<CR>:bprevious<CR>
+nnoremap <silent> <tab> :bnext<CR>
+nnoremap <silent> <s-tab> :bprevious<CR>
 nmap <leader>a <C-^>
 
 " Split screens
