@@ -27,11 +27,6 @@ map <C-z> :xa<CR>
 " Change the mapleader from \ to space
 let mapleader="\<Space>"
 
-if has("nvim")
-  tnoremap <Esc> <C-\><C-n>
-  nmap <leader>t :term<CR>
-endif
-
 " Open netrw file explorer
 map <leader>f :Explore<cr>
 let g:netrw_liststyle=3
