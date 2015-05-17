@@ -1,3 +1,7 @@
+#
+alias lbg='xrdb -merge $HOME/.config/xresources/lightsolarized'
+alias dbg='xrdb -merge $HOME/.config/xresources/darksolarized'
+
 # Push and pop directories on directory stack
 alias pu='pushd'
 alias po='popd'
@@ -50,6 +54,7 @@ alias g4='cd /data/develop/python/aiourlstatus/'
 alias g5='cd /data/develop/python/web/uni-website/'
 alias ge1='cd /data/develop/elixir/comeonin/'
 alias ge2='cd /data/develop/elixir/sanction/'
+alias ew='cd /data/develop/elixir/web/'
 
 # python tests
 alias pytest='python -m unittest tests/*.py'
