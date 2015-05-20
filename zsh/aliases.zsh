@@ -53,7 +53,7 @@ alias g3='cd /data/develop/python/drat/'
 alias g4='cd /data/develop/python/aiourlstatus/'
 alias g5='cd /data/develop/python/web/uni-website/'
 alias ge1='cd /data/develop/elixir/comeonin/'
-alias ge2='cd /data/develop/elixir/sanction/'
+alias ge2='cd /data/develop/elixir/openmaize/'
 alias ew='cd /data/develop/elixir/web/'
 
 # python tests
