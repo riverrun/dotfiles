@@ -7,6 +7,9 @@ cp vim/.vimrc ~/.vimrc
 # Copy .zshrc to home directory
 cp zsh/.zshrc ~/.zshrc
 
+# Copy .tmux.conf to home directory
+cp tmux/.tmux.conf ~/.tmux.conf
+
 # Copy zsh config files to zsh config directory
 [[ -d ~/.config/zsh ]] || mkdir -p ~/.config/zsh
 rm -rf ~/.config/zsh/*

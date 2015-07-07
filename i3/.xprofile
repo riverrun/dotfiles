@@ -1,6 +1,9 @@
 #!/bin/sh
 #
 
+# Set up xcape `tap escape`
+xcape -e 'Caps_Lock=Escape;Control_L=Escape;Shift_L=Escape'
+
 # Set up screens
 if [ `xrandr | grep -c ' connected '` -eq 2 ]; then
     if [ `xrandr | grep VGA1 | grep -c ' connected '` -eq 1 ]; then

@@ -19,8 +19,8 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec urxvt -e tmux
 
-# start chromium
-bindsym $mod+b exec chromium
+# start firefox
+bindsym $mod+b exec firefox
 
 # kill focused window
 bindsym $mod+Shift+q kill
