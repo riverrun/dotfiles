@@ -9,6 +9,9 @@ set $mod Mod4
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:DejaVu Sans Mono 9
 
+# Remove titlebar
+for_window [class="^.*"] border pixel 1
+
 # Floating
 for_window [class="Gimp"]       floating enable
 for_window [class="MPlayer"]    floating enable
