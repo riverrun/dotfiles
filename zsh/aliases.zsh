@@ -1,4 +1,7 @@
-#
+# Startx
+alias xx=startx
+
+# Light and dark solarized
 alias lbg='xrdb -merge $HOME/.config/xresources/lightsolarized'
 alias dbg='xrdb -merge $HOME/.config/xresources/darksolarized'
 
