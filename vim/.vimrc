@@ -27,8 +27,16 @@ map <C-z> :xa<CR>
 " Change the mapleader from \ to space
 let mapleader="\<Space>"
 
+" Vimux shortcuts
+map <leader>r :VimuxPromptCommand<CR>
+map <leader>mc :VimuxRunCommand("mix do deps.get, compile")<CR>
+map <Leader>mtt :VimuxRunCommand("mix test " . bufname("%"))<CR>
+map <leader>mt :VimuxRunCommand("mix test")<CR>
+map <leader>pt :VimuxRunCommand("pytest")<CR>
+map <leader>x :VimuxCloseRunner<CR>
+
 " Open netrw file explorer
-map <leader>f :Explore<cr>
+map <leader>f :Explore<CR>
 let g:netrw_liststyle=3
 
 " Easier buffer navigation
@@ -68,6 +76,18 @@ set incsearch           " do incremental searching
 set hidden              " hide buffers instead of closing them
 set number              " set numbering
 set scrolloff=6         " allow scrolling when moving to top or bottom of screen
+
+" Toggle relative and absolute line numbers
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunc
+
+set relativenumber
+nnoremap <leader>n :call NumberToggle()<CR>
 
 " Toggle paste mode
 set pastetoggle=<F2>
