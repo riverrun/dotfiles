@@ -21,8 +21,8 @@ set background=dark
 colorscheme solarized
 call togglebg#map("<F5>")
 
-" Remap Ctrl-z to save all files and exit
-map <C-z> :xa<CR>
+" Remap Ctrl-z to no operation
+map <C-z> <nop>
 
 " Change the mapleader from \ to space
 let mapleader="\<Space>"
@@ -34,6 +34,7 @@ map <Leader>mtt :VimuxRunCommand("mix test " . bufname("%"))<CR>
 map <leader>mt :VimuxRunCommand("mix test")<CR>
 map <leader>pt :VimuxRunCommand("pytest")<CR>
 map <leader>x :VimuxCloseRunner<CR>
+map <leader>z :VimuxZoomRunner<CR>
 
 " Open netrw file explorer
 map <leader>f :Explore<CR>
