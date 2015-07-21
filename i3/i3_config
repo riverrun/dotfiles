@@ -20,7 +20,7 @@ for_window [class="MPlayer"]    floating enable
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt -e tmux
+bindsym $mod+Return exec urxvt
 
 # start firefox
 bindsym $mod+b exec firefox
@@ -164,4 +164,4 @@ bar {
         status_command i3status
 }
 
-exec --no-startup-id urxvt -e tmux
+exec --no-startup-id urxvt

@@ -9,8 +9,8 @@ which git >/dev/null || {
   exit 1
 }
 
-PATHOGEN_DIR="${HOME}/.vim/autoload"
-BUNDLES_DIR="${HOME}/.vim/bundle"
+PATHOGEN_DIR="${HOME}/.nvim/autoload"
+BUNDLES_DIR="${HOME}/.nvim/bundle"
 
 if [[ -d "${PATHOGEN_DIR}" ]]; then
   echo "Updating pathogen..."

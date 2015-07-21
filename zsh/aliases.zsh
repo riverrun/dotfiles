@@ -46,8 +46,7 @@ alias afind='ack-grep -il'
 alias rsync='noglob rsync'
 
 # Vim aliases
-alias v=vim
-alias vd=vimdiff
+alias v=nvim
 
 # git repositories
 alias g1='cd /data/develop/python/genxword/'
