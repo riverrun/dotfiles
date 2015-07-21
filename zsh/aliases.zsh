@@ -58,6 +58,9 @@ alias ge1='cd /data/develop/elixir/comeonin/'
 alias ge2='cd /data/develop/elixir/openmaize/'
 alias ew='cd /data/develop/elixir/web/'
 
+# elixir tests
+alias mtest='mix test'
+
 # python tests
 alias pytest='python -m unittest tests/*.py'
 
