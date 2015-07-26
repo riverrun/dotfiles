@@ -1,3 +1,4 @@
+haskell-vim
 vim-airline
 vim-elixir
 vim-colors-solarized
