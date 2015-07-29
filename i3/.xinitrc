@@ -7,7 +7,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 # Set up xcape -- tap escape, hold control
-xcape -e 'Caps_Lock=Escape;Control_L=Escape;Shift_L=Escape'
+xcape -e 'Caps_Lock=Escape;Control_L=Escape'
 
 # Set up screens
 if [ `xrandr | grep -c ' connected '` -eq 2 ]; then
