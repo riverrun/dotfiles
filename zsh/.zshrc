@@ -21,4 +21,4 @@ eval `dircolors ~/.dircolors`
 # Load the theme
 source "$ZSH/$ZSH_THEME.zsh-theme"
 
-PATH=$PATH:${HOME}/bin/elixir/bin:${HOME}/.gem/ruby/2.1.0/bin
+PATH=$PATH:${HOME}/.gem/ruby/2.2.0/bin

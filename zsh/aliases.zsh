@@ -9,13 +9,8 @@ alias dbg='xrdb -merge $HOME/.config/xresources/darksolarized'
 alias pu='pushd'
 alias po='popd'
 
-# Basic directory operations
-alias ...='cd ../..'
-alias -- -='cd -'
-
 # Super user
 alias _='sudo'
-alias please='sudo'
 
 #alias g='grep -in'
 
@@ -34,13 +29,16 @@ else
 fi
 
 # List direcory contents
+alias ls='ls --color=auto'
 alias lsa='ls -lah'
 alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -A'
 alias sl=ls # often screw this up
 
-alias afind='ack-grep -il'
+# archlinux aliases
+alias pupgr='sudo pacman -Syu'
+alias pinst='sudo pacman -S'
 
 # rsync alias
 alias rsync='noglob rsync'
@@ -48,18 +46,11 @@ alias rsync='noglob rsync'
 # Vim aliases
 alias v=nvim
 
-# git repositories
-alias g1='cd /data/develop/python/genxword/'
-alias g2='cd /data/develop/python/cheesemaker/'
-alias g3='cd /data/develop/python/drat/'
-alias g4='cd /data/develop/python/aiourlstatus/'
-alias g5='cd /data/develop/python/web/uni-website/'
-alias ge1='cd /data/develop/elixir/comeonin/'
-alias ge2='cd /data/develop/elixir/openmaize/'
-alias ew='cd /data/develop/elixir/web/'
-
-# elixir tests
-alias mtest='mix test'
+# git aliases
+alias g=git
+alias gcom='git commit -a -m'
+alias gcb='git checkout -b'
+alias gpu='git push origin HEAD'
 
 # python tests
 alias pytest='python -m unittest tests/*.py'

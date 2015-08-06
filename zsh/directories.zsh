@@ -4,12 +4,12 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
 
+# Basic directory operations
 alias ..='cd ..'
-alias cd..='cd ..'
-alias cd...='cd ../..'
-alias cd....='cd ../../..'
-alias cd.....='cd ../../../..'
-alias cd/='cd /'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias -- -='cd -'
 
 alias 1='cd -'
 alias 2='cd -2'
@@ -21,22 +21,11 @@ alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
 
-cd () {
-  if   [[ "x$*" == "x..." ]]; then
-    cd ../..
-  elif [[ "x$*" == "x...." ]]; then
-    cd ../../..
-  elif [[ "x$*" == "x....." ]]; then
-    cd ../../../..
-  elif [[ "x$*" == "x......" ]]; then
-    cd ../../../../..
-  elif [ -d ~/.autoenv ]; then
-    source ~/.autoenv/activate.sh
-    autoenv_cd "$@"
-  else
-    builtin cd "$@"
-  fi
-}
+alias cddev='cd /data/develop'
+alias cdpy='cd /data/develop/python'
+alias cdex='cd /data/develop/elixir'
+alias cderl='cd /data/develop/erlang'
+alias cdnim='cd /data/develop/nim'
 
 alias md='mkdir -p'
 alias rd=rmdir
