@@ -22,8 +22,8 @@ colorscheme solarized
 call togglebg#map("<F5>")
 let g:airline_theme="sol"
 
-" Remap Ctrl-z to no operation
-map <C-z> <nop>
+" Remap Ctrl-z to save and exit
+map <C-z> :xa<CR>
 
 " Change the mapleader from \ to space
 let mapleader="\<Space>"
@@ -41,10 +41,10 @@ nmap <leader>e :edit<Space>
 nnoremap <leader>l :buffers<CR>:buffer<Space>
 nnoremap <silent> <tab> :bnext<CR>
 nnoremap <silent> <s-tab> :bprevious<CR>
-nmap <leader>a <C-^>
+nmap <leader>s :wa<CR>
 
 " Split screens
-nmap <leader>s :split<Space>
+nmap <leader>h :split<Space>
 nmap <leader>v :vsplit<Space>
 map + 10<C-w>+
 map - 10<C-w>-
@@ -54,10 +54,6 @@ map <C-m> 20<C-w>>
 " Easier window navigation
 map <C-j> <C-w>w
 map <C-k> <C-w>W
-
-" Save options
-nnoremap gs :w<CR>
-nnoremap ga :wa<CR>
 
 " Visual mode deleting into black hole and pasting from register
 vmap r "_dP

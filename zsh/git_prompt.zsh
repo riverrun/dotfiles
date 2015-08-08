@@ -19,11 +19,7 @@ parse_git_branch() {
 # Show different symbols as appropriate for various Git repository states
 parse_git_state() {
 
-  if git diff-index --quiet HEAD 2> /dev/null; then
-    local GIT_STATE="%F{blue}✓%f "
-  else
-    local GIT_STATE="%F{red}✗%f "
-  fi
+  local GIT_STATE=""
 
   local NUM_AHEAD="$(git log --oneline @{u}.. 2> /dev/null | wc -l | tr -d ' ')"
   if [ "$NUM_AHEAD" -gt 0 ]; then
@@ -35,7 +31,7 @@ parse_git_state() {
     GIT_STATE=$GIT_STATE${GIT_PROMPT_BEHIND//NUM/$NUM_BEHIND}
   fi
 
-  if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
+  if [[ -n $(git ls-files --exclude-standard --others 2> /dev/null) ]]; then
     GIT_STATE=$GIT_STATE$GIT_PROMPT_UNTRACKED
   fi
 

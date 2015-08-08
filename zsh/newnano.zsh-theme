@@ -1,4 +1,4 @@
 local return_code="%(?..%B%F{red}:( %?%f%b)"
 
-PROMPT='${return_code} %F{blue}%n%f %F{yellow}%~%F{blue} ▶%f '
+PROMPT='${return_code} %F{blue}%n@%m%f %F{yellow}%~%f%F{blue} ▶%f '
 RPROMPT='$(git_prompt_string) '
