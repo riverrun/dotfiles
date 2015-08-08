@@ -4,15 +4,12 @@ setopt prompt_subst
 autoload -U colors && colors # Enable colors in prompt
 
 # Modify the colors and symbols in these variables as desired.
-GIT_PROMPT_SYMBOL="%{$fg[blue]%}±"
-GIT_PROMPT_PREFIX="%{$fg[green]%}[%{$reset_color%}"
-GIT_PROMPT_SUFFIX="%{$fg[green]%}]%{$reset_color%}"
-GIT_PROMPT_AHEAD="%{$fg[red]%}ANUM%{$reset_color%}"
-GIT_PROMPT_BEHIND="%{$fg[cyan]%}BNUM%{$reset_color%}"
-GIT_PROMPT_MERGING="%{$fg_bold[magenta]%}⚡︎%{$reset_color%}"
-GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}●%{$reset_color%}"
-GIT_PROMPT_MODIFIED="%{$fg_bold[yellow]%}●%{$reset_color%}"
-GIT_PROMPT_STAGED="%{$fg_bold[green]%}●%{$reset_color%}"
+#GIT_PROMPT_CLEAN="%{$fg_bold[green]%}%{✔%G%}"
+GIT_PROMPT_AHEAD="%F{red}↑NUM%f"
+GIT_PROMPT_BEHIND="%F{cyan}↓NUM%f"
+GIT_PROMPT_UNTRACKED="%F{red}?%f"
+GIT_PROMPT_MODIFIED="%F{blue}✚%f"
+GIT_PROMPT_STAGED="%F{green}●%f"
 
 # Show Git branch/tag, or name-rev if on detached head
 parse_git_branch() {
@@ -22,8 +19,11 @@ parse_git_branch() {
 # Show different symbols as appropriate for various Git repository states
 parse_git_state() {
 
-  # Compose this value via multiple conditional appends.
-  local GIT_STATE=""
+  if git diff-index --quiet HEAD 2> /dev/null; then
+    local GIT_STATE="%F{blue}✓%f "
+  else
+    local GIT_STATE="%F{red}✗%f "
+  fi
 
   local NUM_AHEAD="$(git log --oneline @{u}.. 2> /dev/null | wc -l | tr -d ' ')"
   if [ "$NUM_AHEAD" -gt 0 ]; then
@@ -33,11 +33,6 @@ parse_git_state() {
   local NUM_BEHIND="$(git log --oneline ..@{u} 2> /dev/null | wc -l | tr -d ' ')"
   if [ "$NUM_BEHIND" -gt 0 ]; then
     GIT_STATE=$GIT_STATE${GIT_PROMPT_BEHIND//NUM/$NUM_BEHIND}
-  fi
-
-  local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
-  if [ -n $GIT_DIR ] && test -r $GIT_DIR/MERGE_HEAD; then
-    GIT_STATE=$GIT_STATE$GIT_PROMPT_MERGING
   fi
 
   if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
@@ -53,15 +48,15 @@ parse_git_state() {
   fi
 
   if [[ -n $GIT_STATE ]]; then
-    echo "$GIT_PROMPT_PREFIX$GIT_STATE$GIT_PROMPT_SUFFIX"
+    echo "$GIT_STATE "
   fi
 
 }
 
 # If inside a Git repository, print its branch and state
 git_prompt_string() {
-  local git_where="$(parse_git_branch)"
-  [ -n "$git_where" ] && echo "$GIT_PROMPT_SYMBOL$(parse_git_state)$GIT_PROMPT_PREFIX%{$fg[yellow]%}${git_where#(refs/heads/|tags/)}$GIT_PROMPT_SUFFIX"
+  local git_branch="$(parse_git_branch)"
+  [ -n "$git_branch" ] && echo "$(parse_git_state)%U%F{yellow}${git_branch#(refs/heads/|tags/)}%f%u"
 }
 
 # Set the right-hand prompt

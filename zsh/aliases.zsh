@@ -37,8 +37,8 @@ alias la='ls -A'
 alias sl=ls # often screw this up
 
 # archlinux aliases
-alias pupgr='sudo pacman -Syu'
-alias pinst='sudo pacman -S'
+alias pupg='sudo pacman -Syu'
+alias pins='sudo pacman -S'
 
 # rsync alias
 alias rsync='noglob rsync'
