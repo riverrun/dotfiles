@@ -48,8 +48,9 @@ alias v=nvim
 
 # git aliases
 alias g=git
-alias gcom='git commit -a -m'
-alias gcb='git checkout -b'
+alias gaa='git add .'
+alias gcm='git commit -a -m'
+alias gch='git checkout'
 alias gpu='git push origin HEAD'
 
 # python tests
