@@ -20,7 +20,12 @@ let g:syntastic_auto_loc_list = 1
 set background=dark
 colorscheme solarized
 call togglebg#map("<F5>")
-let g:airline_theme="sol"
+
+" Vim-airline
+let g:airline#extensions#branch#enabled = 0
+let g:airline_theme="solarized"
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
 
 " Remap Ctrl-z to save and exit
 map <C-z> :xa<CR>
