@@ -63,6 +63,9 @@ map <C-k> <C-w>W
 " Visual mode deleting into black hole and pasting from register
 vmap r "_dP
 
+" Omnicomplete shortcut
+inoremap <C-a> <C-x><C-o>
+
 " Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -86,10 +89,7 @@ function! NumberToggle()
 endfunc
 
 set relativenumber
-nnoremap <leader>n :call NumberToggle()<CR>
-
-" Toggle paste mode
-set pastetoggle=<F2>
+nnoremap <F2> :call NumberToggle()<CR>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
@@ -104,8 +104,8 @@ nmap <silent> ,/ :nohlsearch<CR>
 
 " Set tabs to four spaces.
 set tabstop=8
-set softtabstop=4
-set shiftwidth=4
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 
 " Only do this part when compiled with support for autocommands.
@@ -117,18 +117,21 @@ if has("autocmd")
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
 
+  " Enable omnicompletion
+  set omnifunc=syntaxcomplete#Complete
+
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
   au!
 
-  " html, xml, etc files
-  autocmd FileType html,htmldjango,css,less,xhtml,xml setlocal shiftwidth=2 softtabstop=2
-
-  " elixir and nim files
-  autocmd FileType elixir,nim setlocal shiftwidth=2 softtabstop=2
+  " python, javascript and sh files
+  autocmd FileType python,javascript,sh,zsh setlocal shiftwidth=4 softtabstop=4
 
   " c files
   autocmd FileType c setlocal softtabstop=8 shiftwidth=8 noexpandtab
+
+  " add template for elixir files
+  au BufNewFile *.{ex,exs} 0r ~/.nvim/templates/skeleton.ex
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
