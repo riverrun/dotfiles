@@ -63,8 +63,8 @@ map <C-k> <C-w>W
 " Visual mode deleting into black hole and pasting from register
 vmap r "_dP
 
-" Omnicomplete shortcut
-inoremap <C-a> <C-x><C-o>
+" Autocomplete shortcut
+inoremap <tab> <C-p>
 
 " Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -116,9 +116,6 @@ if has("autocmd")
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
-
-  " Enable omnicompletion
-  set omnifunc=syntaxcomplete#Complete
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx

@@ -20,7 +20,12 @@ let g:syntastic_auto_loc_list = 1
 set background=dark
 colorscheme solarized
 call togglebg#map("<F5>")
-let g:airline_theme="sol"
+
+" Vim-airline
+let g:airline#extensions#branch#enabled = 0
+let g:airline_theme="solarized"
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
 
 " Remap Ctrl-z to save and exit
 map <C-z> :xa<CR>
@@ -53,6 +58,9 @@ map <C-k> <C-w>W
 
 " Visual mode deleting into black hole and pasting from register
 vmap r "_dP
+
+" Autocomplete shortcut
+inoremap <tab> <C-p>
 
 " Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -95,8 +103,8 @@ nmap <silent> ,/ :nohlsearch<CR>
 
 " Set tabs to four spaces.
 set tabstop=8
-set softtabstop=4
-set shiftwidth=4
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 
 " Only do this part when compiled with support for autocommands.
@@ -112,14 +120,14 @@ if has("autocmd")
   augroup vimrcEx
   au!
 
-  " html, xml, etc files
-  autocmd FileType html,htmldjango,css,less,xhtml,xml setlocal shiftwidth=2 softtabstop=2
-
-  " elixir and nim files
-  autocmd FileType elixir,nim setlocal shiftwidth=2 softtabstop=2
+  " python, javascript and sh files
+  autocmd FileType python,javascript,sh,zsh setlocal shiftwidth=4 softtabstop=4
 
   " c files
   autocmd FileType c setlocal softtabstop=8 shiftwidth=8 noexpandtab
+
+  " add template for elixir files
+  au BufNewFile *.{ex,exs} 0r ~/.nvim/templates/skeleton.ex
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
