@@ -1,5 +1,6 @@
+deoplete.nvim
+syntastic
 vim-airline
 vim-bufferline
-vim-elixir
 vim-colors-solarized
-syntastic
+vim-elixir

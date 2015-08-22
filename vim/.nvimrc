@@ -37,6 +37,18 @@ let mapleader="\<Space>"
 map <leader>t :terminal<CR>
 tnoremap <Esc> <C-\><C-n>
 
+" Use deoplete for autocompletion
+let g:deoplete#enable_at_startup = 1
+
+" Autocomplete / omnicomplete shortcuts and settings
+" inoremap <C-@> <C-x><C-o>
+inoremap <tab> <C-n>
+inoremap <s-tab> <C-p>
+set completeopt=menu,noselect
+
+" Visual mode deleting into black hole and pasting from register
+vmap r "_dP
+
 " Open netrw file explorer
 map <leader>f :Explore<CR>
 let g:netrw_liststyle=3
@@ -59,12 +71,6 @@ map <C-m> 20<C-w>>
 " Easier window navigation
 map <C-j> <C-w>w
 map <C-k> <C-w>W
-
-" Visual mode deleting into black hole and pasting from register
-vmap r "_dP
-
-" Autocomplete shortcut
-inoremap <tab> <C-p>
 
 " Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -121,6 +127,9 @@ if has("autocmd")
   augroup vimrcEx
   au!
 
+  " Change pythoncomplete to python3complete
+  autocmd FileType python setlocal omnifunc=python3complete#Complete
+
   " python, javascript and sh files
   autocmd FileType python,javascript,sh,zsh setlocal shiftwidth=4 softtabstop=4
 
@@ -128,7 +137,7 @@ if has("autocmd")
   autocmd FileType c setlocal softtabstop=8 shiftwidth=8 noexpandtab
 
   " add template for elixir files
-  au BufNewFile *.{ex,exs} 0r ~/.nvim/templates/skeleton.ex
+  au BufNewFile *.{ex,exs} 0r ~/.nvim/templates/elixir_skel.ex
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler

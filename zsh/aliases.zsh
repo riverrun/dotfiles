@@ -43,7 +43,7 @@ alias pins='sudo pacman -S'
 # rsync alias
 alias rsync='noglob rsync'
 
-# Vim aliases
+# nvim alias
 alias v=nvim
 
 # git aliases
