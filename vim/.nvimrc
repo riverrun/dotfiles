@@ -49,16 +49,19 @@ set completeopt=menu,noselect
 " Visual mode deleting into black hole and pasting from register
 vmap r "_dP
 
-" Open netrw file explorer
-map <leader>f :Explore<CR>
-let g:netrw_liststyle=3
-
 " Easier buffer navigation
 nmap <leader>e :edit<Space>
-nnoremap <leader>l :buffers<CR>:buffer<Space>
 nnoremap <silent> <tab> :bnext<CR>
 nnoremap <silent> <s-tab> :bprevious<CR>
 nmap <leader>s :wa<CR>
+
+" CtrlP shortcuts
+" Open file menu
+nnoremap <Leader>o :CtrlP<CR>
+" Open buffer menu
+nnoremap <Leader>b :CtrlPBuffer<CR>
+" Open most recently used files
+nnoremap <Leader>f :CtrlPMRUFiles<CR>
 
 " Split screens
 nmap <leader>h :split<Space>
@@ -127,8 +130,11 @@ if has("autocmd")
   augroup vimrcEx
   au!
 
-  " Change pythoncomplete to python3complete
+  " Omnicomplete functions -- change pythoncomplete to python3complete
   autocmd FileType python setlocal omnifunc=python3complete#Complete
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
   " python, javascript and sh files
   autocmd FileType python,javascript,sh,zsh setlocal shiftwidth=4 softtabstop=4
