@@ -35,9 +35,8 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
-
-" Save the file when going to another pane or window
-autocmd FocusLost * silent! wa
+set relativenumber
+nnoremap <F2> :call NumberToggle()<CR>
 
 " Leader settings
 let mapleader = " " " <space> as leader
@@ -77,12 +76,14 @@ let g:deoplete#enable_at_startup = 1
 inoremap <tab> <C-n>
 inoremap <s-tab> <C-p>
 set completeopt=menu,noselect
+set shortmess+=c
 
 " Miscellaneous options
 set hlsearch
 nmap <silent> ,/ :nohlsearch<CR>
 set nobackup
 set history=50
+set hidden
 set ruler
 set showcmd
 set incsearch
