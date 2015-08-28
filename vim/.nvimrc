@@ -44,12 +44,11 @@ let mapleader = " " " <space> as leader
 map <leader>t :terminal<CR>
 tnoremap <Esc> <C-\><C-n>
 " Easier buffer navigation
-nmap <leader>e :edit<Space>
 nnoremap <silent> <tab> :bnext<CR>
 nnoremap <silent> <s-tab> :bprevious<CR>
 nmap <leader>s :wa<CR>
 " CtrlP shortcuts
-nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>e :CtrlP<CR>
 nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>f :CtrlPMRUFiles<CR>
 " Split screens
@@ -68,6 +67,9 @@ set expandtab shiftwidth=2 softtabstop=2
 autocmd Filetype python,javascript,sh,zsh setlocal shiftwidth=4 softtabstop=4
 autocmd FileType c setlocal softtabstop=8 shiftwidth=8 noexpandtab
 
+" Use python3complete by default
+autocmd FileType python setlocal omnifunc=python3complete#Complete
+
 " Add template for elixir files
 au BufNewFile *.{ex,exs} 0r ~/.nvim/templates/elixir_skel.ex
 
@@ -77,6 +79,9 @@ inoremap <tab> <C-n>
 inoremap <s-tab> <C-p>
 set completeopt=menu,noselect
 set shortmess+=c
+
+" Check syntax with neomake when writing file
+autocmd! BufWritePost * Neomake
 
 " Miscellaneous options
 set hlsearch
