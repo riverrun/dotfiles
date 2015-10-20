@@ -77,7 +77,7 @@ au BufNewFile *.{ex,exs} 0r ~/.vim/templates/elixir_skel.ex
 let g:neocomplete#enable_at_startup = 1
 inoremap <tab> <C-n>
 inoremap <s-tab> <C-p>
-set completeopt=menu,noselect
+" set completeopt=menu,noselect
 set shortmess+=c
 
 " Miscellaneous options
