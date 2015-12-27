@@ -1,11 +1,12 @@
 call plug#begin()
-Plug 'Shougo/neocomplete.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/syntastic'
 Plug 'bling/vim-bufferline'
 Plug 'bling/vim-airline'
 Plug 'altercation/vim-colors-solarized'
 Plug 'elixir-lang/vim-elixir'
+Plug 'wavded/vim-stylus'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 " Colorscheme
@@ -70,13 +71,9 @@ autocmd FileType python setlocal omnifunc=python3complete#Complete
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_python_checkers = ['pyflakes']
 
-" Add template for elixir files
-au BufNewFile *.{ex,exs} 0r ~/.vim/templates/elixir_skel.ex
-
 " Autocomplete / omnicomplete shortcuts and settings
-let g:neocomplete#enable_at_startup = 1
-inoremap <tab> <C-n>
-inoremap <s-tab> <C-p>
+" inoremap <tab> <C-n>
+" inoremap <s-tab> <C-p>
 " set completeopt=menu,noselect
 set shortmess+=c
 

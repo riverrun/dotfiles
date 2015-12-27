@@ -7,6 +7,7 @@ ZSH_THEME="newnano"
 for config_file ($ZSH/*.zsh); do
   source $config_file
 done
+setopt extended_glob
 
 # Save the location of the current completion dump file.
 ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
@@ -21,4 +22,4 @@ eval `dircolors ~/.dircolors`
 # Load the theme
 source "$ZSH/$ZSH_THEME.zsh-theme"
 
-PATH=$PATH:${HOME}/.gem/ruby/2.2.0/bin
+PATH=$PATH:${HOME}/.gem/ruby/2.1.0/bin
