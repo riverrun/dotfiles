@@ -6,7 +6,6 @@ Plug 'bling/vim-airline'
 Plug 'altercation/vim-colors-solarized'
 Plug 'elixir-lang/vim-elixir'
 Plug 'wavded/vim-stylus'
-Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 " Colorscheme

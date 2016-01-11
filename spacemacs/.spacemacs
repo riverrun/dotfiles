@@ -31,8 +31,7 @@ values."
      syntax-checking
      ;; version-control
      )
-   dotspacemacs-additional-packages '(stylus-mode
-                                      prolog-mode)
+   dotspacemacs-additional-packages '(stylus-mode)
    dotspacemacs-excluded-packages '()
    dotspacemacs-delete-orphan-packages t))
 

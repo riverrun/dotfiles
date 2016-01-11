@@ -25,7 +25,7 @@ alias cddev='cd /data/develop'
 alias cdpy='cd /data/develop/python'
 alias cdex='cd /data/develop/elixir'
 alias cderl='cd /data/develop/erlang'
-alias cdnim='cd /data/develop/nim'
+alias cdpro='cd /data/develop/prolog'
 
 alias md='mkdir -p'
 alias rd=rmdir
