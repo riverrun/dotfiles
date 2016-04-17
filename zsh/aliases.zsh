@@ -43,20 +43,28 @@ alias pins='sudo pacman -S'
 # rsync alias
 alias rsync='noglob rsync'
 
-# vim alias
-alias v=vim
+# nvim alias
+alias v=nvim
+
+# tmux alias
+alias tmux='TERM=screen-256color-bce tmux'
 
 # git aliases
 alias g=git
-alias gaa='git add .'
 alias gcm='git commit -a -m'
 alias gch='git checkout'
+alias gdiff='git diff --staged'
+alias glog='git log --oneline --graph --decorate --all'
+alias gst='git status'
 alias gpu='git push origin HEAD'
 
-# python tests
+# python aliases
+alias ipy='python3.5 -m IPython'
+alias py3=python3.5
 alias pytest='python -m unittest tests/*.py'
 
 # upgrade all pip packages
+alias getpipupgrades='pip freeze --local | grep -v '^\-e' | cut -d = -f 1'
 alias upgradepip='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U'
 
 # Miscellaneous
