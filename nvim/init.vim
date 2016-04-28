@@ -22,13 +22,14 @@ call togglebg#map("<C-t>")
 
 " Vim-airline
 let g:airline#extensions#branch#enabled = 0
-let g:airline_theme='solarized'
+let g:airline_theme='base16'
 let g:airline_powerline_fonts = 1
 
 " Remap Ctrl-z to save and exit
 map <C-z> :xa<CR>
 
-" Remove s binding, so that I don't hit it by mistake
+" Remove s bindings, so that I don't hit it by mistake
+map S <Nop>
 map s <Nop>
 
 " Visual mode deleting into black hole and pasting from register
@@ -72,7 +73,7 @@ autocmd FileType c setlocal softtabstop=8 shiftwidth=8 noexpandtab
 
 " Default omnifuncs
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=python3complete#Complete
 
 " Autocomplete / omnicomplete shortcuts and settings
@@ -80,7 +81,6 @@ let g:deoplete#enable_at_startup = 1
 inoremap <tab> <C-n>
 inoremap <S-tab> <C-p>
 set completeopt=menu
-" set completeopt=menu,noselect
 set shortmess+=c
 
 " Ultisnips trigger
