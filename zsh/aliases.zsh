@@ -59,8 +59,6 @@ alias gst='git status'
 alias gpu='git push origin HEAD'
 
 # python aliases
-alias ipy='python3.5 -m IPython'
-alias py3=python3.5
 alias pytest='python -m unittest tests/*.py'
 
 # upgrade all pip packages
