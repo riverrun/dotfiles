@@ -78,7 +78,7 @@ autocmd FileType python setlocal omnifunc=python3complete#Complete
 
 " Autocomplete / omnicomplete shortcuts and settings
 let g:deoplete#enable_at_startup = 1
-inoremap <tab> <C-n>
+inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
 inoremap <S-tab> <C-p>
 set completeopt=menu
 set shortmess+=c
