@@ -11,11 +11,12 @@ general {
         interval = 5
 }
 
-order += "wireless wlo1"
+#order += "wireless wlo1"
 #order += "ethernet eth0"
 order += "battery 0"
+order += "cpu_temperature 0"
 order += "load"
-order += "tztime local"
+order += "time"
 
 wireless wlo1 {
         format_up = "Wifi: (%quality at %essid) %ip"
@@ -34,6 +35,11 @@ battery 0 {
         path = "/sys/class/power_supply/BAT0/uevent"
 }
 
+cpu_temperature 0 {
+        format = "Cpu Temp: %degrees °C"
+        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input"
+}
+
 run_watch DHCP {
         pidfile = "/var/run/dhclient*.pid"
 }
@@ -42,14 +48,10 @@ run_watch VPN {
         pidfile = "/var/run/vpnc/pid"
 }
 
-tztime local {
-        format = "%Y-%m-%d %H:%M"
-}
-
 load {
         format = "%1min %5min %15min"
 }
 
-disk "/" {
-        format = "%avail"
+time {
+        format = "%a %d %b %Y %H:%M"
 }

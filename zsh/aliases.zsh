@@ -2,8 +2,8 @@
 alias xx=startx
 
 # Light and dark solarized
-alias lbg='xrdb -merge $HOME/.config/xresources/lightsolarized'
-alias dbg='xrdb -merge $HOME/.config/xresources/darksolarized'
+alias lbg='xrdb -load $HOME/.config/xresources/lightsolarized'
+alias dbg='xrdb -load $HOME/.config/xresources/darksolarized'
 
 # Push and pop directories on directory stack
 alias pu='pushd'
@@ -39,6 +39,8 @@ alias sl=ls # often screw this up
 # archlinux aliases
 alias pupg='sudo pacman -Syu'
 alias pins='sudo pacman -S'
+alias editmirror='sudo nvim -d /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist'
+alias newmirror='sudo mv /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist'
 
 # rsync alias
 alias rsync='noglob rsync'
@@ -67,3 +69,4 @@ alias upgradepip='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -
 
 # Miscellaneous
 alias bc='bc -l'
+alias videoplayer='xset s off -dpms;mpv'
