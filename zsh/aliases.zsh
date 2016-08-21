@@ -48,6 +48,9 @@ alias rsync='noglob rsync'
 # nvim alias
 alias v=nvim
 
+# chibi-scheme
+alias cbs=chibi-scheme
+
 # tmux alias
 alias tmux='TERM=screen-256color-bce tmux'
 
