@@ -24,6 +24,8 @@ alias 9='cd -9'
 alias cddev='cd /data/develop'
 alias cdpy='cd /data/develop/python'
 alias cdex='cd /data/develop/elixir'
+alias cdhas='cd /data/develop/haskell'
+alias cdsc='cd /data/develop/scheme'
 alias cderl='cd /data/develop/erlang'
 alias cdpro='cd /data/develop/prolog'
 

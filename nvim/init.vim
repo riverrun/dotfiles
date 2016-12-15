@@ -2,12 +2,15 @@ call plug#begin()
 Plug 'Shougo/deoplete.nvim'
 Plug 'slashmili/alchemist.vim'
 Plug 'elixir-lang/vim-elixir'
+Plug 'wlangstroth/vim-racket'
+Plug 'janko-m/vim-test'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 Plug 'davidhalter/jedi'
 Plug 'zchee/deoplete-jedi'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'benekastah/neomake'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
 Plug 'bling/vim-bufferline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -21,14 +24,14 @@ colorscheme solarized
 call togglebg#map("<C-t>")
 
 " Vim-airline
-let g:airline#extensions#branch#enabled = 0
-let g:airline_theme='base16'
-let g:airline_powerline_fonts = 1
+let g:airline#extensions#branch#enabled=1
+let g:airline_theme='zenburn'
+let g:airline_powerline_fonts=1
 
 " Remap Ctrl-z to save and exit
 map <C-z> :xa<CR>
 
-" Remove s bindings, so that I don't hit it by mistake
+" Remove s bindings, so that I don't hit them by mistake
 map S <Nop>
 map s <Nop>
 
@@ -36,7 +39,7 @@ map s <Nop>
 vmap r "_dP
 
 " Set space as leader
-let mapleader = " "
+let mapleader=" "
 
 " Neovim terminal
 map <leader>t :terminal<CR>
@@ -45,17 +48,17 @@ tnoremap <Esc> <C-\><C-n>
 " Easier buffer navigation
 nnoremap <silent> <tab> :bnext<CR>
 nnoremap <silent> <s-tab> :bprevious<CR>
-nmap <leader>s :wa<CR>
+nmap <leader>w :wa<CR>
 nnoremap <NUL> :wa<CR>
 
-" CtrlP shortcuts
-nnoremap <Leader>e :CtrlP<CR>
-nnoremap <Leader>b :CtrlPBuffer<CR>
-nnoremap <Leader>f :CtrlPMRUFiles<CR>
-
-" Split screens
-nmap <leader>h :split<Space>
+" Open files
+nmap <leader>e :edit<Space>
+nmap <leader>s :split<Space>
 nmap <leader>v :vsplit<Space>
+set splitbelow
+set splitright
+
+" Manage split screens
 map + 10<C-w>+
 map - 10<C-w>-
 map <C-n> 20<C-w><
@@ -83,8 +86,17 @@ inoremap <S-tab> <C-p>
 set completeopt=menu
 set shortmess+=c
 
+" Fugitive
+nmap <leader>gs :Gstatus<CR>
+
+" NERDTree shortcuts
+nnoremap <leader>f :NERDTreeToggle<CR>
+
 " Ultisnips trigger
 let g:UltiSnipsExpandTrigger="<NUL>"
+
+" Alchemist settings
+let g:alchemist_iex_term_size=10
 
 " Strip trailing whitespace when writing file
 fun! <SID>StripTrailingWhitespaces()
@@ -95,10 +107,15 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
+" Automatically save when moving buffer
+"autocmd BufLeave,FocusLost * silent! wall
+
 " Check syntax with neomake when writing file
 autocmd! BufWritePost * Neomake
 
 " Miscellaneous options
+nmap <leader>h :help<Space>
+set nofoldenable
 set relativenumber
 set number
 set hlsearch
