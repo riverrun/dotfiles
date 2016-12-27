@@ -1,10 +1,3 @@
-# Startx
-alias xx=startx
-
-# Light and dark solarized
-alias lbg='xrdb -load $HOME/.config/xresources/lightsolarized'
-alias dbg='xrdb -load $HOME/.config/xresources/darksolarized'
-
 # Push and pop directories on directory stack
 alias pu='pushd'
 alias po='popd'
@@ -48,12 +41,6 @@ alias rsync='noglob rsync'
 # nvim alias
 alias v=nvim
 
-# chibi-scheme
-alias cbs=chibi-scheme
-
-# tmux alias
-alias tmux='TERM=screen-256color-bce tmux'
-
 # git aliases
 alias g=git
 alias gcm='git commit -a -m'
@@ -74,7 +61,3 @@ alias pytest='python -m unittest tests/*.py'
 # upgrade all pip packages
 alias getpipupgrades='pip freeze --local | grep -v '^\-e' | cut -d = -f 1'
 alias upgradepip='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U'
-
-# Miscellaneous
-alias bc='bc -l'
-alias videoplayer='xset s off -dpms;mpv'

@@ -1,13 +1,15 @@
 call plug#begin()
 Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'slashmili/alchemist.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'wlangstroth/vim-racket'
-Plug 'janko-m/vim-test'
-Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
+Plug 'bitc/vim-hdevtools', {'for': 'haskell'}
+Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
 Plug 'davidhalter/jedi'
 Plug 'zchee/deoplete-jedi'
+Plug 'tmhedberg/SimpylFold'
 Plug 'benekastah/neomake'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
@@ -28,50 +30,71 @@ let g:airline#extensions#branch#enabled=1
 let g:airline_theme='zenburn'
 let g:airline_powerline_fonts=1
 
+" Folding
+set foldmethod=syntax
+function! MarkdownLevel()
+    let h = matchstr(getline(v:lnum), '^#\+')
+    if empty(h)
+        return "="
+    else
+        return ">" . len(h)
+    endif
+endfunction
+autocmd BufNewFile,BufRead *.md setlocal foldexpr=MarkdownLevel()
+autocmd BufNewFile,BufRead *.md setlocal foldmethod=expr foldlevel=1
+autocmd Filetype python setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+autocmd Filetype elixir setlocal foldlevel=1
+
 " Remap Ctrl-z to save and exit
 map <C-z> :xa<CR>
 
 " Remove s bindings, so that I don't hit them by mistake
-map S <Nop>
-map s <Nop>
+nnoremap S <Nop>
+nnoremap s <Nop>
 
 " Visual mode deleting into black hole and pasting from register
-vmap r "_dP
+vnoremap r "_dP
+
+" Remap Y to be more like C and D
+nnoremap Y y$
 
 " Set space as leader
 let mapleader=" "
 
 " Neovim terminal
-map <leader>t :terminal<CR>
+noremap <leader>t :terminal<CR>
 tnoremap <Esc> <C-\><C-n>
 
 " Easier buffer navigation
 nnoremap <silent> <tab> :bnext<CR>
 nnoremap <silent> <s-tab> :bprevious<CR>
-nmap <leader>w :wa<CR>
+nnoremap <leader>q :bd<CR>
+nnoremap <leader>w :wa<CR>
 nnoremap <NUL> :wa<CR>
 
 " Open files
-nmap <leader>e :edit<Space>
-nmap <leader>s :split<Space>
-nmap <leader>v :vsplit<Space>
+set path+=**
+nnoremap <leader>e :edit<Space>
+nnoremap <leader>f :find<Space>
+nnoremap <leader>s :split<Space>
+nnoremap <leader>v :vsplit<Space>
 set splitbelow
 set splitright
 
 " Manage split screens
-map + 10<C-w>+
-map - 10<C-w>-
-map <C-n> 20<C-w><
-map <C-m> 20<C-w>>
+nnoremap + 10<C-w>+
+nnoremap - 10<C-w>-
+nnoremap <C-n> 20<C-w><
+nnoremap <C-m> 20<C-w>>
 
 " Easier window navigation
-nmap <C-j> <C-w>w
-nmap <C-k> <C-w>W
+nnoremap <C-j> <C-w>w
+nnoremap <C-k> <C-w>W
 
 " Tab / indentation settings
-set expandtab shiftwidth=2 softtabstop=2
+set expandtab shiftwidth=4 softtabstop=4
 autocmd BufNewFile,BufRead *.pl set filetype=prolog
-autocmd Filetype python,javascript,prolog,sh,zsh setlocal shiftwidth=4 softtabstop=4
+autocmd Filetype html,css,elixir setlocal shiftwidth=2 softtabstop=2
 autocmd FileType c setlocal softtabstop=8 shiftwidth=8 noexpandtab
 
 " Default omnifuncs
@@ -86,20 +109,22 @@ inoremap <S-tab> <C-p>
 set completeopt=menu
 set shortmess+=c
 
+" Neosnippet trigger
+inoremap <C-j> <Plug>(neosnippet_expand_or_jump)
+snoremap <C-j> <Plug>(neosnippet_expand_or_jump)
+xnoremap <C-j> <Plug>(neosnippet_expand_target)
+
 " Fugitive
-nmap <leader>gs :Gstatus<CR>
+nnoremap gs :Gstatus<CR>
 
 " NERDTree shortcuts
-nnoremap <leader>f :NERDTreeToggle<CR>
-
-" Ultisnips trigger
-let g:UltiSnipsExpandTrigger="<NUL>"
+nnoremap <C-p> :NERDTreeToggle<CR>
 
 " Alchemist settings
 let g:alchemist_iex_term_size=10
 
 " Strip trailing whitespace when writing file
-fun! <SID>StripTrailingWhitespaces()
+function! <SID>StripTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
     %s/\s\+$//e
@@ -107,19 +132,14 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-" Automatically save when moving buffer
-"autocmd BufLeave,FocusLost * silent! wall
-
 " Check syntax with neomake when writing file
 autocmd! BufWritePost * Neomake
 
 " Miscellaneous options
-nmap <leader>h :help<Space>
-set nofoldenable
 set relativenumber
 set number
 set hlsearch
-nmap <silent> ,/ :nohlsearch<CR>
+nnoremap <silent> ,/ :nohlsearch<CR>
 set nobackup
 set history=50
 set hidden
