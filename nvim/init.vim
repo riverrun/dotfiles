@@ -30,6 +30,9 @@ let g:airline#extensions#branch#enabled=1
 let g:airline_theme='zenburn'
 let g:airline_powerline_fonts=1
 
+" Set space as leader
+let mapleader="\<Space>"
+
 " Folding
 set foldmethod=syntax
 function! MarkdownLevel()
@@ -44,6 +47,7 @@ autocmd BufNewFile,BufRead *.md setlocal foldexpr=MarkdownLevel()
 autocmd BufNewFile,BufRead *.md setlocal foldmethod=expr foldlevel=1
 autocmd Filetype python setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd Filetype elixir setlocal foldlevel=1
+nnoremap <C-Space> zA
 
 " Remap Ctrl-z to save and exit
 map <C-z> :xa<CR>
@@ -57,9 +61,6 @@ vnoremap r "_dP
 
 " Remap Y to be more like C and D
 nnoremap Y y$
-
-" Set space as leader
-let mapleader=" "
 
 " Neovim terminal
 noremap <leader>t :terminal<CR>
