@@ -52,18 +52,26 @@ nnoremap <C-Space> zA
 " Remap Ctrl-z to save and exit
 map <C-z> :xa<CR>
 
+" Check syntax with neomake when writing file
+autocmd! BufWritePost * Neomake
+
+" Substitute
+nnoremap <leader>sa :%s/
+
 " Remove s bindings, so that I don't hit them by mistake
 nnoremap S <Nop>
 nnoremap s <Nop>
 
 " Visual mode deleting into black hole and pasting from register
-vnoremap r "_dP
+vnoremap <leader>r "_dP
 
 " Remap Y to be more like C and D
 nnoremap Y y$
 
 " Neovim terminal
-noremap <leader>t :terminal<CR>
+nnoremap <leader>tt :terminal<CR>
+nnoremap <leader>ts :split term://zsh<CR>
+nnoremap <leader>tv :vsplit term://zsh<CR>
 tnoremap <Esc> <C-\><C-n>
 
 " Easier buffer navigation
@@ -71,26 +79,19 @@ nnoremap <silent> <tab> :bnext<CR>
 nnoremap <silent> <s-tab> :bprevious<CR>
 nnoremap <leader>q :bd<CR>
 nnoremap <leader>w :wa<CR>
-nnoremap <NUL> :wa<CR>
 
 " Open files
-set path+=**
 nnoremap <leader>e :edit<Space>
-nnoremap <leader>f :find<Space>
-nnoremap <leader>s :split<Space>
-nnoremap <leader>v :vsplit<Space>
-set splitbelow
-set splitright
 
-" Manage split screens
-nnoremap + 10<C-w>+
-nnoremap - 10<C-w>-
-nnoremap <C-n> 20<C-w><
-nnoremap <C-m> 20<C-w>>
-
-" Easier window navigation
+" Split screens
 nnoremap <C-j> <C-w>w
 nnoremap <C-k> <C-w>W
+nnoremap + 5<C-w>+
+nnoremap - 5<C-w>-
+nnoremap <M-,> 10<C-w><
+nnoremap <M-.> 10<C-w>>
+set splitbelow
+set splitright
 
 " Tab / indentation settings
 set expandtab shiftwidth=4 softtabstop=4
@@ -132,9 +133,6 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-
-" Check syntax with neomake when writing file
-autocmd! BufWritePost * Neomake
 
 " Miscellaneous options
 set relativenumber
