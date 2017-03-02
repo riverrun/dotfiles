@@ -5,8 +5,6 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'slashmili/alchemist.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'wlangstroth/vim-racket'
-Plug 'bitc/vim-hdevtools', {'for': 'haskell'}
-Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
 Plug 'davidhalter/jedi'
 Plug 'zchee/deoplete-jedi'
 Plug 'tmhedberg/SimpylFold'
@@ -23,15 +21,15 @@ call plug#end()
 set t_Co=256
 set background=dark
 colorscheme solarized
-call togglebg#map("<C-t>")
+call togglebg#map("F5")
 
 " Vim-airline
 let g:airline#extensions#branch#enabled=1
 let g:airline_theme='zenburn'
 let g:airline_powerline_fonts=1
 
-" Set space as leader
-let mapleader="\<Space>"
+" Set comma as leader
+let mapleader=","
 
 " Folding
 set foldmethod=syntax
@@ -47,19 +45,12 @@ autocmd BufNewFile,BufRead *.md setlocal foldexpr=MarkdownLevel()
 autocmd BufNewFile,BufRead *.md setlocal foldmethod=expr foldlevel=1
 autocmd Filetype python setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd Filetype elixir setlocal foldlevel=1
-nnoremap <C-Space> zA
-
-" Remap Ctrl-z to save and exit
-map <C-z> :xa<CR>
 
 " Check syntax with neomake when writing file
 autocmd! BufWritePost * Neomake
 
-" Substitute
-nnoremap <leader>sa :%s/
-
-" Remove s bindings, so that I don't hit them by mistake
-nnoremap S <Nop>
+" Remove Ctrl-z and s bindings, so that I don't hit them by mistake
+map <C-z> <Nop>
 nnoremap s <Nop>
 
 " Visual mode deleting into black hole and pasting from register
@@ -78,7 +69,7 @@ tnoremap <Esc> <C-\><C-n>
 nnoremap <silent> <tab> :bnext<CR>
 nnoremap <silent> <s-tab> :bprevious<CR>
 nnoremap <leader>q :bd<CR>
-nnoremap <leader>w :wa<CR>
+nnoremap S :wa<CR>
 
 " Open files
 nnoremap <leader>e :edit<Space>
@@ -93,6 +84,12 @@ nnoremap <M-.> 10<C-w>>
 set splitbelow
 set splitright
 
+" Navigation within file
+nnoremap <Space> <C-d>
+nnoremap <C-space> <C-u>
+nnoremap <CR> G
+nnoremap <BS> gg
+
 " Tab / indentation settings
 set expandtab shiftwidth=4 softtabstop=4
 autocmd BufNewFile,BufRead *.pl set filetype=prolog
@@ -106,15 +103,14 @@ autocmd FileType python setlocal omnifunc=python3complete#Complete
 
 " Autocomplete / omnicomplete shortcuts and settings
 let g:deoplete#enable_at_startup = 1
-inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
-inoremap <S-tab> <C-p>
 set completeopt=menu
 set shortmess+=c
+inoremap <C-j> <C-n>
 
-" Neosnippet trigger
-inoremap <C-j> <Plug>(neosnippet_expand_or_jump)
-snoremap <C-j> <Plug>(neosnippet_expand_or_jump)
-xnoremap <C-j> <Plug>(neosnippet_expand_target)
+" Neosnippets
+imap <C-space> <Plug>(neosnippet_expand_or_jump)
+smap <C-space> <Plug>(neosnippet_expand_or_jump)
+xmap <C-space> <Plug>(neosnippet_expand_target)
 
 " Fugitive
 nnoremap gs :Gstatus<CR>
@@ -138,12 +134,12 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 set relativenumber
 set number
 set hlsearch
+set gdefault
 nnoremap <silent> ,/ :nohlsearch<CR>
 set nobackup
 set history=50
 set hidden
 set ruler
 set showcmd
-set incsearch
 set scrolloff=6
 set laststatus=2

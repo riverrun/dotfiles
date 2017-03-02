@@ -25,6 +25,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Shift+Return exec xfce4-terminal --drop-down
 
 # start web browsers
 bindsym $mod+w exec chromium
@@ -149,4 +150,4 @@ hide_edge_borders both
 # Float google hangouts
 for_window [window_role="pop-up"] floating enable
 
-exec --no-startup-id feh --bg-scale ~/.config/backgrounds/vim-shortcuts.png
+exec --no-startup-id feh --bg-max ~/.config/backgrounds/dvorak_layout.jpg
