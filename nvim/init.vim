@@ -44,7 +44,7 @@ endfunction
 autocmd BufNewFile,BufRead *.md setlocal foldexpr=MarkdownLevel()
 autocmd BufNewFile,BufRead *.md setlocal foldmethod=expr foldlevel=1
 autocmd Filetype python setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
-autocmd Filetype elixir setlocal foldlevel=1
+autocmd Filetype elixir setlocal foldlevel=2
 
 " Check syntax with neomake when writing file
 autocmd! BufWritePost * Neomake
