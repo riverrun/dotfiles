@@ -1,13 +1,7 @@
 call plug#begin()
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'slashmili/alchemist.vim'
-Plug 'elixir-lang/vim-elixir'
-Plug 'wlangstroth/vim-racket'
-Plug 'davidhalter/jedi'
-Plug 'zchee/deoplete-jedi'
-Plug 'tmhedberg/SimpylFold'
 Plug 'benekastah/neomake'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
@@ -15,7 +9,18 @@ Plug 'bling/vim-bufferline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
+"Plug 'pangloss/vim-javascript'
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+"Plug 'mxw/vim-jsx'
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+Plug 'davidhalter/jedi', { 'for': 'python' }
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
 call plug#end()
+
+" Stop cursor from blinking
+set guicursor=
 
 " Colorscheme
 set t_Co=256
@@ -46,8 +51,9 @@ autocmd BufNewFile,BufRead *.md setlocal foldmethod=expr foldlevel=1
 autocmd Filetype python setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd Filetype elixir setlocal foldlevel=2
 
-" Check syntax with neomake when writing file
+" Check syntax with neomake when writing file and enable linters
 autocmd! BufWritePost * Neomake
+let g:neomake_javascript_enabled_makers = ['eslint']
 
 " Remove Ctrl-z and s bindings, so that I don't hit them by mistake
 map <C-z> <Nop>
@@ -93,16 +99,18 @@ nnoremap <BS> gg
 " Tab / indentation settings
 set expandtab shiftwidth=4 softtabstop=4
 autocmd BufNewFile,BufRead *.pl set filetype=prolog
-autocmd Filetype html,css,elixir setlocal shiftwidth=2 softtabstop=2
+autocmd Filetype html,css,elixir,javascript setlocal shiftwidth=2 softtabstop=2
 autocmd FileType c setlocal softtabstop=8 shiftwidth=8 noexpandtab
 
-" Default omnifuncs
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=python3complete#Complete
+" Wildmenu
+set wildmenu
+set wildmode=list:longest,full
 
-" Autocomplete / omnicomplete shortcuts and settings
+" Autocomplete shortcuts and settings
 let g:deoplete#enable_at_startup = 1
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = '0'
+let g:tern#filetypes = ['jsx', 'javascript.jsx']
 set completeopt=menu
 set shortmess+=c
 inoremap <C-j> <C-n>
@@ -134,7 +142,6 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 set relativenumber
 set number
 set hlsearch
-set gdefault
 nnoremap <silent> ,/ :nohlsearch<CR>
 set nobackup
 set history=50
