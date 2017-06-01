@@ -50,11 +50,6 @@ alias glog='git log --oneline --graph --decorate --all'
 alias gst='git status'
 alias gpu='git push origin HEAD'
 
-# search aliases
-alias sspy='sillysearch -x py'
-alias ssex='sillysearch -x ex -x eex -x exs'
-alias sshas='sillysearch -x hs'
-
 # python aliases
 alias pytest='python -m unittest tests/*.py'
 

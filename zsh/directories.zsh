@@ -22,6 +22,7 @@ alias 8='cd -8'
 alias 9='cd -9'
 
 alias cddev='cd /data/develop'
+alias cdweb='cd /data/develop/web'
 alias cdpy='cd /data/develop/python'
 alias cdex='cd /data/develop/elixir'
 alias cdhas='cd /data/develop/haskell'
