@@ -16,8 +16,6 @@ ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 autoload -U compinit
 compinit -i -d "${ZSH_COMPDUMP}"
 
-. /usr/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
-
 # Solarized dir colors
 eval `dircolors ~/.dircolors`
 

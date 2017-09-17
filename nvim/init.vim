@@ -34,6 +34,7 @@ map <C-z> <Nop>
 nnoremap s <Nop>
 
 " Miscellaneous options
+set mouse=a
 set guicursor=
 set relativenumber
 set number
@@ -83,8 +84,6 @@ nmap <leader>ln :lnext<CR>
 nmap <leader>lp :lprev<CR>
 
 " Navigation within file
-nnoremap B ^
-nnoremap E $
 nnoremap <Space> <C-d>
 nnoremap <C-space> <C-u>
 nnoremap <CR> G
@@ -106,6 +105,8 @@ augroup END
 " Wildmenu
 set wildmenu
 set wildmode=list:longest,full
+set wildignore+=.hg,.git,.svn
+set wildignore+=*.pyc
 
 " Folding
 set foldmethod=syntax
@@ -113,8 +114,7 @@ augroup filetypes_folding
     autocmd!
     autocmd BufNewFile,BufRead *.md setlocal foldexpr=MarkdownLevel()
     autocmd BufNewFile,BufRead *.md setlocal foldmethod=expr foldlevel=1
-    autocmd Filetype python setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
-    autocmd Filetype elixir setlocal foldlevel=2
+    autocmd Filetype elixir setlocal foldlevel=1
 augroup END
 
 " Function for markdown folding
