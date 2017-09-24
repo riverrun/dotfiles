@@ -49,6 +49,9 @@ set showcmd
 set scrolloff=6
 set laststatus=2
 
+" Add an another escape
+imap <C-l> <Esc>
+
 " Visual mode deleting into black hole and pasting from register
 vnoremap <leader>r "_dP
 
@@ -85,7 +88,7 @@ nmap <leader>lp :lprev<CR>
 
 " Navigation within file
 nnoremap <Space> <C-d>
-nnoremap <C-space> <C-u>
+" nnoremap <C-space> <C-u>
 nnoremap <CR> G
 nnoremap <BS> gg
 
@@ -165,9 +168,9 @@ set shortmess+=c
 inoremap <C-j> <C-n>
 
 " Neosnippets
-imap <C-space> <Plug>(neosnippet_expand_or_jump)
-smap <C-space> <Plug>(neosnippet_expand_or_jump)
-xmap <C-space> <Plug>(neosnippet_expand_target)
+imap <C-h> <Plug>(neosnippet_expand_or_jump)
+smap <C-h> <Plug>(neosnippet_expand_or_jump)
+xmap <C-h> <Plug>(neosnippet_expand_target)
 
 " Fugitive
 nnoremap gs :Gstatus<CR>
