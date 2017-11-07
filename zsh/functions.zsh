@@ -11,4 +11,4 @@ function addssh() {
     ssh-add
 }
 
-alias zoek='racket /data/develop/scheme/potsnpans/zoek.rkt'
+alias ssearch='/data/develop/scheme/gauche/ssearch.scm'

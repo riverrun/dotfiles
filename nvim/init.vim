@@ -4,8 +4,8 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'benekastah/neomake'
 Plug 'cohama/lexima.vim'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'bling/vim-bufferline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -26,8 +26,8 @@ set background=dark
 colorscheme solarized
 call togglebg#map("F5")
 
-" Set comma as leader
-let mapleader=","
+" Set space as leader
+let mapleader=" "
 
 " Remove Ctrl-z and s bindings, so that I don't hit them by mistake
 map <C-z> <Nop>
@@ -49,7 +49,7 @@ set showcmd
 set scrolloff=6
 set laststatus=2
 
-" Add an another escape
+" Add another escape
 imap <C-l> <Esc>
 
 " Visual mode deleting into black hole and pasting from register
@@ -87,8 +87,6 @@ nmap <leader>ln :lnext<CR>
 nmap <leader>lp :lprev<CR>
 
 " Navigation within file
-nnoremap <Space> <C-d>
-" nnoremap <C-space> <C-u>
 nnoremap <CR> G
 nnoremap <BS> gg
 
@@ -97,11 +95,11 @@ nnoremap <silent> <tab> :bnext<CR>
 nnoremap <silent> <s-tab> :bprevious<CR>
 
 " Filetype settings
-set expandtab shiftwidth=4 softtabstop=4
+set expandtab shiftwidth=2 softtabstop=2
 augroup filetypes
     autocmd!
     autocmd BufNewFile,BufRead *.pl set filetype=prolog
-    autocmd Filetype html,css,elixir,javascript setlocal shiftwidth=2 softtabstop=2
+    autocmd Filetype python,sh,erlang,prolog setlocal shiftwidth=4 softtabstop=4
     autocmd FileType c setlocal softtabstop=8 shiftwidth=8 noexpandtab
 augroup END
 
@@ -117,7 +115,7 @@ augroup filetypes_folding
     autocmd!
     autocmd BufNewFile,BufRead *.md setlocal foldexpr=MarkdownLevel()
     autocmd BufNewFile,BufRead *.md setlocal foldmethod=expr foldlevel=1
-    autocmd Filetype elixir setlocal foldlevel=1
+    autocmd Filetype elixir setlocal foldlevel=2
 augroup END
 
 " Function for markdown folding
@@ -168,15 +166,20 @@ set shortmess+=c
 inoremap <C-j> <C-n>
 
 " Neosnippets
-imap <C-h> <Plug>(neosnippet_expand_or_jump)
-smap <C-h> <Plug>(neosnippet_expand_or_jump)
-xmap <C-h> <Plug>(neosnippet_expand_target)
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
+imap <C-Space> <Plug>(neosnippet_expand_or_jump)
+smap <C-Space> <Plug>(neosnippet_expand_or_jump)
+xmap <C-Space> <Plug>(neosnippet_expand_target)
+
+" Ctrlp
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " Fugitive
 nnoremap gs :Gstatus<CR>
 
-" NERDTree shortcuts
-nnoremap <C-p> :NERDTreeToggle<CR>
-
 " Alchemist settings
 let g:alchemist_iex_term_size=10
+nnoremap <leader>ms :IEx<Space>
+nnoremap <leader>mt :Mix test<CR>
+nnoremap <leader>mc :Mix compile<CR>
