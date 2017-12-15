@@ -2,7 +2,7 @@ call plug#begin()
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'benekastah/neomake'
+Plug 'w0rp/ale'
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -60,7 +60,6 @@ nnoremap Y y$
 
 " Opening and saving files
 nnoremap <leader>e :edit<Space>
-nnoremap <leader>q :bd<CR>
 nnoremap S :wa<CR>
 
 " Neovim terminal
@@ -79,12 +78,10 @@ nnoremap <M-.> 10<C-w>>
 set splitbelow
 set splitright
 
-" Location window
+" Location and quickfix windows
 nmap <leader>lo :lopen<CR>
 nmap <leader>lc :lclose<CR>
-nmap <leader>ll :ll<CR>
-nmap <leader>ln :lnext<CR>
-nmap <leader>lp :lprev<CR>
+nnoremap <leader>cc :cclose<CR>
 
 " Navigation within file
 nnoremap <CR> G
@@ -93,6 +90,8 @@ nnoremap <BS> gg
 " Easier buffer navigation
 nnoremap <silent> <tab> :bnext<CR>
 nnoremap <silent> <s-tab> :bprevious<CR>
+nnoremap <leader>bs :buffers<CR>
+nnoremap <leader>bd :bdelete<Space>
 
 " Filetype settings
 set expandtab shiftwidth=2 softtabstop=2
@@ -117,6 +116,10 @@ augroup filetypes_folding
     autocmd BufNewFile,BufRead *.md setlocal foldmethod=expr foldlevel=1
     autocmd Filetype elixir setlocal foldlevel=2
 augroup END
+nnoremap <leader>f zm
+nnoremap <leader>F zM
+nnoremap <leader>u zr
+nnoremap <leader>U zR
 
 " Function for markdown folding
 function! MarkdownLevel()
@@ -140,27 +143,28 @@ endfun
 augroup save_jobs
     autocmd!
     autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-    autocmd! BufWritePost * Neomake
 augroup END
 
+" Ale
+let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+
 " Vim-airline
-let g:airline#extensions#branch#enabled=1
 let g:airline_theme='zenburn'
 let g:airline_powerline_fonts=1
+let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#ale#enabled = 1
 
-" Neomake
-let g:neomake_open_list = 2
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_jsx_enabled_makers = ['eslint']
-let g:neomake_list_height = 10
-let g:airline#extensions#neomake#enabled = 1
+" Vim-jsx
 let g:jsx_ext_required = 0
 
 " Autocomplete (deoplete) shortcuts and settings
 let g:deoplete#enable_at_startup = 1
-let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = '0'
-let g:tern#filetypes = ['jsx', 'javascript.jsx']
+let g:deoplete#sources#ternjs#filetypes = ['jsx', 'javascript.jsx']
 set completeopt=menu
 set shortmess+=c
 inoremap <C-j> <C-n>
@@ -176,7 +180,14 @@ xmap <C-Space> <Plug>(neosnippet_expand_target)
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " Fugitive
-nnoremap gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gm :Gmerge<CR>
+nnoremap <leader>gs :Gstatus<CR>
+
+" Lexima custom rules
+call lexima#add_rule({'char': "'", 'filetype': ['scheme']})
+call lexima#add_rule({'char': "`", 'filetype': ['scheme']})
 
 " Alchemist settings
 let g:alchemist_iex_term_size=10

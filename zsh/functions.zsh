@@ -6,9 +6,4 @@ function replace() {
     sed -i "s/$1/$2/g" **/*~(.git|deps|doc|_build|__pycache__|node_modules)/*(.)
 }
 
-function addssh() {
-    eval $(ssh-agent)
-    ssh-add
-}
-
 alias ssearch='/data/develop/scheme/gauche/ssearch.scm'
