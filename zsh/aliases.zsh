@@ -29,9 +29,11 @@ alias ll='ls -lh'
 alias la='ls -A'
 alias sl=ls # often screw this up
 
-# opensuse aliases
-alias zup='sudo zypper update'
-alias zdup='sudo zypper dup --no-allow-vendor-change'
+# archlinux aliases
+alias pupg='sudo pacman -Syu'
+alias pins='sudo pacman -S'
+alias editmirror='sudo nvim -d /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist'
+alias newmirror='sudo mv /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist'
 
 # rsync alias
 alias rsync='noglob rsync'
@@ -50,3 +52,7 @@ alias gpu='git push origin HEAD'
 
 # python aliases
 alias pytest='python -m unittest tests/*.py'
+
+# upgrade all pip packages
+alias getpipupgrades='pip freeze --local | grep -v '^\-e' | cut -d = -f 1'
+alias upgradepip='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U'
