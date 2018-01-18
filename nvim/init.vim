@@ -4,11 +4,6 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'w0rp/ale'
 Plug 'cohama/lexima.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'bling/vim-bufferline'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
@@ -48,9 +43,6 @@ set ruler
 set showcmd
 set scrolloff=6
 set laststatus=2
-
-" Add another escape
-imap <C-l> <Esc>
 
 " Visual mode deleting into black hole and pasting from register
 vnoremap <leader>r "_dP
@@ -153,12 +145,6 @@ let g:ale_lint_on_enter = 0
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 
-" Vim-airline
-let g:airline_theme='zenburn'
-let g:airline_powerline_fonts=1
-let g:airline#extensions#branch#enabled=1
-let g:airline#extensions#ale#enabled = 1
-
 " Vim-jsx
 let g:jsx_ext_required = 0
 
@@ -175,15 +161,6 @@ let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 imap <C-Space> <Plug>(neosnippet_expand_or_jump)
 smap <C-Space> <Plug>(neosnippet_expand_or_jump)
 xmap <C-Space> <Plug>(neosnippet_expand_target)
-
-" Ctrlp
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-
-" Fugitive
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gm :Gmerge<CR>
-nnoremap <leader>gs :Gstatus<CR>
 
 " Lexima custom rules
 call lexima#add_rule({'char': "'", 'filetype': ['scheme']})

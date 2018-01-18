@@ -2,6 +2,9 @@
 alias pu='pushd'
 alias po='popd'
 
+# startx
+alias xx='startx'
+
 # Super user
 alias _='sudo'
 
@@ -34,6 +37,7 @@ alias pupg='sudo pacman -Syu'
 alias pins='sudo pacman -S'
 alias editmirror='sudo nvim -d /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist'
 alias newmirror='sudo mv /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist'
+alias unrequired='comm -23 <(pacman -Qqt | sort) <(pacman -Sqg base base-devel | sort)'
 
 # rsync alias
 alias rsync='noglob rsync'
@@ -52,7 +56,3 @@ alias gpu='git push origin HEAD'
 
 # python aliases
 alias pytest='python -m unittest tests/*.py'
-
-# upgrade all pip packages
-alias getpipupgrades='pip freeze --local | grep -v '^\-e' | cut -d = -f 1'
-alias upgradepip='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U'
