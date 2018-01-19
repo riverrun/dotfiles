@@ -47,6 +47,7 @@ alias v=nvim
 
 # git aliases
 alias g=git
+alias gbr='git branch'
 alias gcm='git commit -a -m'
 alias gch='git checkout'
 alias gdiff='git diff --staged'

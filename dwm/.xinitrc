@@ -21,7 +21,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 # Background
-feh --bg-scale $HOME/build/dwm_linux-wallpaper-1280x800.jpg &
+feh --bg-fill $HOME/build/dwm_linux-wallpaper-1280x800.jpg &
 
 # Statusbar loop
 while true; do
