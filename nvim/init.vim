@@ -4,6 +4,9 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'w0rp/ale'
 Plug 'cohama/lexima.vim'
+Plug 'bling/vim-bufferline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
@@ -144,6 +147,10 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
+
+" Vim-airline
+let g:airline_theme='zenburn'
+let g:airline#extensions#ale#enabled = 1
 
 " Vim-jsx
 let g:jsx_ext_required = 0

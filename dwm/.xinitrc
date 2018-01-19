@@ -20,6 +20,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     unset f
 fi
 
+# Background
+feh --bg-scale $HOME/build/dwm_linux-wallpaper-1280x800.jpg &
+
 # Statusbar loop
 while true; do
     BAT_STATUS=$(awk -F "=" '/STATUS/ {status=$2} \
