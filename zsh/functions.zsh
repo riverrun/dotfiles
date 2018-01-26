@@ -10,8 +10,3 @@ function addssh() {
     eval $(ssh-agent)
     ssh-add
 }
-
-# mount a usb stick - $1 = device and $2 = mountpoint
-function mountusb() {
-    mount -o gid=users,fmask=113,dmask=002 $1 $2
-}

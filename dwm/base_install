@@ -1,0 +1,48 @@
+# Arch Linux Dwm basic setup
+
+## during install
+
+base
+base-devel
+grub
+intel-ucode
+dialog
+wpa_supplicant
+
+## after install - base packages
+
+alsa-utils
+dmenu
+dwm
+feh
+moc
+mpv
+p7zip
+xf86-video-intel
+xorg-server
+xorg-xinit
+xorg-xrandr
+xorg-xsetroot
+zsh
+
+## web browser
+
+chromium
+
+## dev
+
+neovim
+python-neovim
+nodejs
+npm
+openssh
+postgresql
+st (or rxvt-unicode)
+tmux
+xcape
+inotify-tools
+
+## elixir dev
+
+erlang
+elixir (from github master)
