@@ -39,15 +39,6 @@ alias editmirror='sudo nvim -d /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mir
 alias newmirror='sudo mv /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist'
 alias unrequired='comm -23 <(pacman -Qqt | sort) <(pacman -Sqg base base-devel | sort)'
 
-# xrandr alias
-alias multi='xrandr --output VGA1 --auto --left-of LVDS1'
-
-# rsync alias
-alias rsync='noglob rsync'
-
-# nvim alias
-alias v=nvim
-
 # git aliases
 alias g=git
 alias gbr='git branch'
@@ -58,5 +49,9 @@ alias glog='git log --oneline --graph --decorate --all'
 alias gst='git status'
 alias gpu='git push origin HEAD'
 
-# python aliases
+# misc aliases
 alias pytest='python -m unittest tests/*.py'
+alias multi='xrandr --output VGA1 --auto --left-of LVDS1'
+alias rsync='noglob rsync'
+alias v=nvim
+alias tmux='tmux -2'
