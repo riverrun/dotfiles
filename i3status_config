@@ -11,16 +11,16 @@ general {
         interval = 5
 }
 
-order += "wireless wlp5s0b1"
 #order += "ethernet eth0"
 order += "battery 0"
-order += "cpu_temperature 0"
-order += "load"
+#order += "cpu_temperature 0"
+#order += "load"
 order += "time"
+order += "wireless wlp5s0b1"
 
 wireless wlp5s0b1 {
-        format_up = "Wifi: %ip"
-        format_down = "Wifi: down"
+        format_up = "%ip "
+        format_down = "Down "
 }
 
 ethernet eno1 {
@@ -53,5 +53,5 @@ load {
 }
 
 time {
-        format = "%a %d %b %Y %H:%M"
+        format = "%H:%M - %b %d"
 }
