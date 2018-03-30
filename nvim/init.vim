@@ -7,7 +7,7 @@ Plug 'cohama/lexima.vim'
 Plug 'bling/vim-bufferline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
+Plug 'iCyMind/NeoSolarized'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
@@ -19,10 +19,16 @@ Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
 call plug#end()
 
 " Colorscheme
-set t_Co=256
+set termguicolors
 set background=dark
-colorscheme solarized
-call togglebg#map("F5")
+colorscheme NeoSolarized
+
+" Function for toggling the background color
+function! s:ToggleBG()
+    let &background = ( &background == "dark" ? "light" : "dark" )
+endfunction
+
+nnoremap <F5> :call <SID>ToggleBG()<CR>
 
 " Set space as leader
 let mapleader=" "
@@ -32,7 +38,6 @@ map <C-z> <Nop>
 nnoremap s <Nop>
 
 " Miscellaneous options
-set mouse=a
 set guicursor=
 set relativenumber
 set number
@@ -117,7 +122,7 @@ nnoremap <leader>u zr
 nnoremap <leader>U zR
 
 " Function for markdown folding
-function! MarkdownLevel()
+function! s:MarkdownLevel()
     let h = matchstr(getline(v:lnum), '^#\+')
     if empty(h)
         return "="
@@ -127,12 +132,12 @@ function! MarkdownLevel()
 endfunction
 
 " Function to strip trailing whitespace when writing file
-function! <SID>StripTrailingWhitespaces()
+function! s:StripTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
     %s/\s\+$//e
     call cursor(l, c)
-endfun
+endfunction
 
 " Jobs to do when saving a file
 augroup save_jobs
@@ -141,7 +146,7 @@ augroup save_jobs
 augroup END
 
 " Ale
-let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_linters = {'javascript': ['eslint'], 'elixir': ['credo']}
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
@@ -151,6 +156,7 @@ let g:ale_sign_warning = '⚠'
 " Vim-airline
 let g:airline_theme='zenburn'
 let g:airline#extensions#ale#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " Vim-jsx
 let g:jsx_ext_required = 0

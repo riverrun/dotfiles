@@ -50,7 +50,6 @@ alias gst='git status'
 alias gpu='git push origin HEAD'
 
 # misc aliases
-alias pytest='python -m unittest tests/*.py'
 alias multi='xrandr --output VGA1 --auto --left-of LVDS1'
 alias rsync='noglob rsync'
 alias v=nvim
