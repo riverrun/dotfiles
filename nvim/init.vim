@@ -30,6 +30,9 @@ endfunction
 
 nnoremap <F5> :call <SID>ToggleBG()<CR>
 
+" Use Control-l to exit insert mode
+inoremap <C-l> <Esc>
+
 " Set space as leader
 let mapleader=" "
 
