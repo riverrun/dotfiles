@@ -29,11 +29,7 @@ endfunction
 nnoremap <F5> :call <SID>ToggleBG()<CR>
 
 " Set comma as leader
-let mapleader=","
-
-" Hit space to go into command mode
-nmap <Space> :
-vmap <Space> :
+let mapleader=" "
 
 " Remove Ctrl-z and s bindings, so that I don't hit them by mistake
 map <C-z> <Nop>
@@ -45,13 +41,16 @@ set guicursor=
 set relativenumber
 set number
 set hlsearch
-nnoremap <silent> ,/ :nohlsearch<CR>
+nnoremap <leader>c :nohlsearch<CR>
 set nobackup
 set history=50
 set hidden
 "set cursorline
 set scrolloff=6
 set laststatus=2
+
+" Help in new tab
+nnoremap <leader>h :tab help<Space>
 
 " Visual mode deleting into black hole and pasting from register
 vnoremap <leader>r "_dP
@@ -63,11 +62,10 @@ nnoremap Y y$
 nnoremap <leader>e :edit<Space>
 nnoremap S :wa<CR>
 
-" Neovim terminal
-nnoremap <leader>tt :terminal<CR>
-nnoremap <leader>ts :10split term://zsh<CR>
-nnoremap <leader>tv :40vsplit term://zsh<CR>
-tnoremap <Esc> <C-\><C-n>
+" Easier buffer navigation
+nnoremap <silent> <Tab> :bnext<CR>
+nnoremap <silent> <S-Tab> :bprevious<CR>
+nnoremap <leader>b :buffers<CR>:buffer<Space>
 
 " Split screens
 nnoremap <C-j> <C-w>w
@@ -78,12 +76,6 @@ nnoremap <M-,> 10<C-w><
 nnoremap <M-.> 10<C-w>>
 set splitbelow
 set splitright
-
-" Easier buffer navigation
-nnoremap <silent> <Tab> :bnext<CR>
-nnoremap <silent> <S-Tab> :bprevious<CR>
-nnoremap <leader>bs :buffers<CR>
-nnoremap <leader>bd :bdelete<Space>
 
 " Filetype settings
 set expandtab shiftwidth=2 softtabstop=2
@@ -100,6 +92,12 @@ set wildmode=list:longest,full
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico,*.pdf,*.psd,*.pyc
 set wildignore+=.hg,.git,.svn
 
+" Neovim terminal
+nnoremap <leader>tt :terminal<CR>
+nnoremap <leader>ts :10split term://zsh<CR>
+nnoremap <leader>tv :40vsplit term://zsh<CR>
+tnoremap <Esc> <C-\><C-n>
+
 " Use ag for vimgrep
 if executable('ag')
     set grepprg=ag\ --vimgrep
@@ -113,11 +111,16 @@ endif
 
 " Folding
 set foldmethod=syntax
+set foldlevel=10
 augroup filetypes_folding
     autocmd!
-    autocmd Filetype elixir setlocal foldlevel=2
+    "autocmd Filetype elixir setlocal foldlevel=2
     autocmd Filetype python setlocal foldmethod=indent
 augroup END
+
+" CtrlP - include buffers (not needed if <leader>b works
+"let g:ctrlp_cmd = 'CtrlPMixed'
+"let g:ctrlp_cmd = 'CtrlPBuffer'
 
 " Neomake
 call neomake#configure#automake('w')
