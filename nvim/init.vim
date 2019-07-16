@@ -4,8 +4,6 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
 Plug 'neomake/neomake'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'bling/vim-bufferline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
@@ -26,54 +24,77 @@ colorscheme NeoSolarized
 function! s:ToggleBG()
     let &background = ( &background == "dark" ? "light" : "dark" )
 endfunction
-nnoremap <F5> :call <SID>ToggleBG()<CR>
+nnoremap <silent> <F5> :call <SID>ToggleBG()<CR>
 
-" Set comma as leader
+" Set space as leader
 let mapleader=" "
 
 " Remove Ctrl-z and s bindings, so that I don't hit them by mistake
 map <C-z> <Nop>
-nnoremap s <Nop>
+noremap s <Nop>
+
+" Replace hard-to-reach keys
+inoremap <C-l> <Esc>
+vnoremap <C-l> <Esc>
+noremap H ^
+noremap L $
+vnoremap L g_
+noremap M %
 
 " Miscellaneous options
+set path+=lib/**,test/**,tests/**
 set mouse=a
 set guicursor=
 set relativenumber
 set number
 set hlsearch
-nnoremap <leader>c :nohlsearch<CR>
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 set nobackup
 set history=50
 set hidden
-"set cursorline
+set cursorline
 set scrolloff=6
 set laststatus=2
 
 " Help in new tab
-nnoremap <leader>h :tab help<Space>
+nnoremap <Leader>h :tab help<Space>
 
 " Visual mode deleting into black hole and pasting from register
-vnoremap <leader>r "_dP
+vnoremap <Leader>r "_dP
 
 " Remap Y to be more like C and D
 nnoremap Y y$
 
 " Opening and saving files
-nnoremap <leader>e :edit<Space>
+nnoremap <Leader>e :edit<Space>
+nnoremap <Leader>f :find<Space>
 nnoremap S :wa<CR>
 
 " Easier buffer navigation
-nnoremap <silent> <Tab> :bnext<CR>
-nnoremap <silent> <S-Tab> :bprevious<CR>
-nnoremap <leader>b :buffers<CR>:buffer<Space>
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprevious<CR>
+nnoremap <Leader>b :buffers<CR>:buffer<Space>
+
+" Neovim terminal
+nnoremap <Leader>t :terminal<CR>
+tnoremap <Esc> <C-\><C-n>
+
+" Search & replace
+nnoremap n nzz
+nnoremap N Nzz
+
+if executable('ag')
+    set grepprg=ag\ --vimgrep
+    set grepformat=%f:%l:%c%m
+endif
+
+" TODO: replace these two with functions at some stage
+nnoremap <Leader>cs :cdo %s/<C-r><C-w>//g <Bar> update<C-f>2F/l
+nnoremap <Leader>ss :%s/<C-r>///g<Left><Left>
 
 " Split screens
 nnoremap <C-j> <C-w>w
 nnoremap <C-k> <C-w>W
-nnoremap + 5<C-w>+
-nnoremap - 5<C-w>-
-nnoremap <M-,> 10<C-w><
-nnoremap <M-.> 10<C-w>>
 set splitbelow
 set splitright
 
@@ -82,7 +103,7 @@ set expandtab shiftwidth=2 softtabstop=2
 augroup filetypes
     autocmd!
     autocmd BufNewFile,BufRead *.pl set filetype=prolog
-    autocmd Filetype python,sh,zsh,erlang,prolog setlocal shiftwidth=4 softtabstop=4
+    autocmd Filetype python,sh,zsh,erlang,haskell,prolog setlocal shiftwidth=4 softtabstop=4
     autocmd FileType c setlocal softtabstop=8 shiftwidth=8 noexpandtab
 augroup END
 
@@ -92,35 +113,13 @@ set wildmode=list:longest,full
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico,*.pdf,*.psd,*.pyc
 set wildignore+=.hg,.git,.svn
 
-" Neovim terminal
-nnoremap <leader>tt :terminal<CR>
-nnoremap <leader>ts :10split term://zsh<CR>
-nnoremap <leader>tv :40vsplit term://zsh<CR>
-tnoremap <Esc> <C-\><C-n>
-
-" Use ag for vimgrep
-if executable('ag')
-    set grepprg=ag\ --vimgrep
-    set grepformat=%f:%l:%c%m
-    " replace (after search)
-    ":cdo %s//$1/gc | update
-
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-    let g:ctrlp_use_caching = 0
-endif
-
 " Folding
 set foldmethod=syntax
 set foldlevel=10
 augroup filetypes_folding
     autocmd!
-    "autocmd Filetype elixir setlocal foldlevel=2
     autocmd Filetype python setlocal foldmethod=indent
 augroup END
-
-" CtrlP - include buffers (not needed if <leader>b works
-"let g:ctrlp_cmd = 'CtrlPMixed'
-"let g:ctrlp_cmd = 'CtrlPBuffer'
 
 " Neomake
 call neomake#configure#automake('w')
@@ -148,9 +147,4 @@ nnoremap gs :Gstatus<CR>
 " Vim-airline
 let g:airline_theme='zenburn'
 let g:airline_powerline_fonts = 1
-
-" Alchemist settings
-let g:alchemist_iex_term_size=10
-nnoremap <leader>ms :IEx<Space>
-nnoremap <leader>mt :Mix test<CR>
-nnoremap <leader>mc :Mix compile<CR>
+let g:airline_section_y = 'Term: %{bufnr("term") == -1 ? "None" : bufnr("term")}'
