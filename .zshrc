@@ -21,3 +21,6 @@ eval `dircolors ~/.dircolors`
 
 # Load the theme
 source "$ZSH/$ZSH_THEME.zsh-theme"
+
+# Enable Elixir shell history
+export ERL_AFLAGS="-kernel shell_history enabled"
