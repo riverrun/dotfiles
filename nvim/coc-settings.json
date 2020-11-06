@@ -8,25 +8,6 @@
     "markdown",
     "python"
   ],
-  //"elixirLS.dialyzerEnabled": false,
   "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
-  "python.formatting.provider": "black",
-  "languageserver": {
-    "prolog": {
-      "command": "swipl",
-      "args": [
-        "-g",
-        "use_module(library(lsp_server))",
-        "-g",
-        "lsp_server:main",
-        "-t",
-        "halt",
-        "--",
-        "stdio"
-      ],
-      "filetypes": [
-        "prolog"
-      ]
-    }
-  }
+  "python.formatting.provider": "black"
 }
