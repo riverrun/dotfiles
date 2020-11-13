@@ -20,7 +20,7 @@
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Number of lines/columns (not pixels) in the terminal. The number of columns
@@ -69,7 +69,7 @@
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  #startup_mode: Windowed
+  startup_mode: Fullscreen
 
   # Window title
   #title: Alacritty
@@ -108,10 +108,10 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: monospace
+    family: DejaVu Sans Mono
 
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    style: Book
 
   # Bold font face
   bold:
@@ -119,7 +119,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: monospace
+    #family: monospace
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -130,7 +130,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: monospace
+    #family: monospace
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -141,7 +141,7 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: monospace
+    #family: monospace
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
