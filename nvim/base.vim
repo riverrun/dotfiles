@@ -59,8 +59,11 @@ nnoremap <C-p> :bprevious<CR>
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
 
 " Neovim terminal
-"nnoremap <Leader>t :terminal<CR> - commented out as using neoterm
+nnoremap <Leader>t :terminal<CR>
 tnoremap <Esc> <C-\><C-n>
+au TermEnter * setlocal scrolloff=0
+au TermLeave * setlocal scrolloff=6
+
 
 " Search & replace
 nnoremap n nzz

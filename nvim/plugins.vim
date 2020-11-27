@@ -1,10 +1,8 @@
 call plug#begin()
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'iCyMind/NeoSolarized'
@@ -17,7 +15,15 @@ colorscheme NeoSolarized
 " Fugitive
 nnoremap gs :Gstatus<CR>
 
-" Vim-airline
-let g:airline_extensions=['branch']
-let g:airline_theme='zenburn'
-let g:airline_powerline_fonts=1
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveStatusline'
+      \ },
+      \ }
+set noshowmode

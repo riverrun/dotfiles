@@ -8,6 +8,13 @@ function replace() {
     ag -0 -l $1 | xargs -0 sed -i "s/$1/$2/g"
 }
 
+function umbrella_cmd() {
+    for i in apps/*
+    do
+        (cd $i && echo $i && $@)
+    done
+}
+
 function addssh() {
     eval $(ssh-agent)
     ssh-add
