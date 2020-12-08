@@ -14,6 +14,7 @@ colorscheme NeoSolarized
 
 " Fugitive
 nnoremap gs :Gstatus<CR>
+autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " lightline
 let g:lightline = {

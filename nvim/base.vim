@@ -1,7 +1,6 @@
 " Colorscheme
 set termguicolors
 set background=dark
-"colorscheme NeoSolarized
 
 " Function for toggling the background color
 function! s:ToggleBG()
@@ -16,13 +15,14 @@ let mapleader=" "
 map <C-z> <Nop>
 noremap s <Nop>
 
-" Replace hard-to-reach keys
+" Make some commonly used key bindings easier to reach
 inoremap <C-l> <Esc>
 vnoremap <C-l> <Esc>
 noremap H ^
 noremap L $
 vnoremap L g_
 noremap M %
+inoremap <C-j> <C-n>
 
 " Miscellaneous options
 set path+=lib/**,test/**,tests/**
@@ -58,12 +58,18 @@ nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
 
-" Neovim terminal
-nnoremap <Leader>t :terminal<CR>
-tnoremap <Esc> <C-\><C-n>
-au TermEnter * setlocal scrolloff=0
-au TermLeave * setlocal scrolloff=6
+" Wildmenu
+set wildmenu
+set wildmode=list:longest,full
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico,*.pdf,*.psd,*.pyc
+set wildignore+=.hg,.git,.svn
 
+" Split screens
+nnoremap <C-j> <C-w>w
+nnoremap <C-k> <C-w>W
+set splitbelow
+set splitright
+set diffopt+=vertical
 
 " Search & replace
 nnoremap n nzz
@@ -80,11 +86,12 @@ nnoremap <Leader>ss :%s/<C-r>///g<Left><Left>
 " Add undo until last write
 nnoremap U :earlier 1f<CR>
 
-" Split screens
-nnoremap <C-j> <C-w>w
-nnoremap <C-k> <C-w>W
-set splitbelow
-set splitright
+" Neovim terminal
+nnoremap <Leader>t :terminal<CR>
+tnoremap <Esc> <C-\><C-n>
+autocmd TermOpen * setlocal scrollback=100000
+autocmd TermEnter * setlocal scrolloff=0
+autocmd TermLeave * setlocal scrolloff=6
 
 " Filetype settings
 set expandtab shiftwidth=2 softtabstop=2
@@ -95,19 +102,11 @@ augroup filetypes
     autocmd FileType c setlocal softtabstop=8 shiftwidth=8 noexpandtab
 augroup END
 
-" Wildmenu
-set wildmenu
-set wildmode=list:longest,full
-set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico,*.pdf,*.psd,*.pyc
-set wildignore+=.hg,.git,.svn
-
 " Folding
 set foldmethod=syntax
-set foldlevel=10
+set foldlevel=1
 augroup filetypes_folding
     autocmd!
     autocmd Filetype python setlocal foldmethod=indent
 augroup END
-
-" Useful for autocomplete
-inoremap <C-j> <C-n>
+let g:markdown_folding=1
