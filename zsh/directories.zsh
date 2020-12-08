@@ -21,13 +21,10 @@ alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
 
-alias cdd='cd /data/develop'
-alias cdwork='cd /data/develop/work'
-alias cdhas='cd /data/develop/haskell'
-alias cdpy='cd /data/develop/python'
-alias cdex='cd /data/develop/elixir'
-alias cderl='cd /data/develop/erlang'
-alias cdpro='cd /data/develop/prolog'
+alias cdd='cd $HOME/develop'
+alias cdwork='cd $HOME/develop/work'
+alias cdpy='cd $HOME/develop/python'
+alias cdex='cd $HOME/develop/elixir'
 
 alias md='mkdir -p'
 alias rd=rmdir
