@@ -100,6 +100,7 @@ augroup filetypes
     autocmd BufNewFile,BufRead *.pl set filetype=prolog
     autocmd Filetype python,sh,zsh,erlang,haskell,prolog setlocal shiftwidth=4 softtabstop=4
     autocmd FileType c setlocal softtabstop=8 shiftwidth=8 noexpandtab
+    autocmd FileType markdown setlocal textwidth=80
 augroup END
 
 " Folding
@@ -110,3 +111,10 @@ augroup filetypes_folding
     autocmd Filetype python setlocal foldmethod=indent
 augroup END
 let g:markdown_folding=1
+
+" Spell check options
+set spelllang=en,cjk
+nnoremap <silent> <Leader>sp :set spell!<cr>
+
+" Go to notes index file
+nnoremap <Leader>nn :e $HOME/Documents/notes/index.md<CR>
