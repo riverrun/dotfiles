@@ -36,7 +36,7 @@ set nobackup
 set history=50
 set hidden
 set cursorline
-set scrolloff=6
+"set scrolloff=6
 set laststatus=2
 
 " Help in new tab
@@ -58,6 +58,9 @@ nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
 
+" Switch between the last two files
+nnoremap <Leader><Leader> <C-^>
+
 " Wildmenu
 set wildmenu
 set wildmode=list:longest,full
@@ -69,6 +72,8 @@ nnoremap <C-j> <C-w>w
 nnoremap <C-k> <C-w>W
 set splitbelow
 set splitright
+
+" Vim diff
 set diffopt+=vertical
 
 " Search & replace
@@ -76,12 +81,24 @@ nnoremap n nzz
 nnoremap N Nzz
 
 if executable('ag')
-    set grepprg=ag\ --vimgrep
-    set grepformat=%f:%l:%c%m
+  " use ag as the grep program
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " search for text and open a quickfix window with the results
+  command -nargs=+ -complete=file -bar Ag silent! grep! <args> | cwindow | redraw!
+  " maybe change this to s in the future - but don't want to hit it by mistake
+  nnoremap \ :Ag<Space>
+
+  " bind K to grep word under cursor
+  nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 endif
 
 nnoremap <Leader>cs :cdo %s/<C-r><C-w>//g <Bar> update<C-f>2F/l
 nnoremap <Leader>ss :%s/<C-r>///g<Left><Left>
+
+" Quickfix window
+nnoremap [q :cprevious<CR>
+nnoremap ]q :cnext<CR>
 
 " Add undo until last write
 nnoremap U :earlier 1f<CR>
@@ -90,25 +107,25 @@ nnoremap U :earlier 1f<CR>
 nnoremap <Leader>t :terminal<CR>
 tnoremap <Esc> <C-\><C-n>
 autocmd TermOpen * setlocal scrollback=100000
-autocmd TermEnter * setlocal scrolloff=0
-autocmd TermLeave * setlocal scrolloff=6
+"autocmd TermEnter * setlocal scrolloff=0
+"autocmd TermLeave * setlocal scrolloff=6
 
 " Filetype settings
 set expandtab shiftwidth=2 softtabstop=2
 augroup filetypes
-    autocmd!
-    autocmd BufNewFile,BufRead *.pl set filetype=prolog
-    autocmd Filetype python,sh,zsh,erlang,haskell,prolog setlocal shiftwidth=4 softtabstop=4
-    autocmd FileType c setlocal softtabstop=8 shiftwidth=8 noexpandtab
-    autocmd FileType markdown setlocal textwidth=80
+  autocmd!
+  autocmd BufNewFile,BufRead *.pl set filetype=prolog
+  autocmd Filetype python,sh,zsh,erlang,haskell,prolog setlocal shiftwidth=4 softtabstop=4
+  autocmd FileType c setlocal softtabstop=8 shiftwidth=8 noexpandtab
+  autocmd FileType markdown setlocal textwidth=80
 augroup END
 
 " Folding
 set foldmethod=syntax
 set foldlevel=1
 augroup filetypes_folding
-    autocmd!
-    autocmd Filetype python setlocal foldmethod=indent
+  autocmd!
+  autocmd Filetype python setlocal foldmethod=indent
 augroup END
 let g:markdown_folding=1
 
