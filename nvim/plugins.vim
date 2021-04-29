@@ -12,6 +12,11 @@ call plug#end()
 " Set colorscheme
 colorscheme NeoSolarized
 
+" Dispatch
+nnoremap <Leader>mtt :Dispatch mix test<CR>
+nnoremap <Leader>mft :Dispatch mix test %<CR>
+nnoremap <Leader>mlt :execute "Dispatch mix test %:" . line(".")<CR>
+
 " Fugitive
 nnoremap gs :Gstatus<CR>
 autocmd BufReadPost fugitive://* set bufhidden=delete

@@ -104,7 +104,9 @@ nnoremap ]q :cnext<CR>
 nnoremap U :earlier 1f<CR>
 
 " Neovim terminal
-nnoremap <Leader>t :terminal<CR>
+nnoremap <Leader>T :terminal<CR>
+" Bit of a hack, but this works as long as the terminal is the first buffer
+nnoremap <silent> <Leader>t :buffer 1<CR>
 tnoremap <Esc> <C-\><C-n>
 autocmd TermOpen * setlocal scrollback=100000
 "autocmd TermEnter * setlocal scrolloff=0
