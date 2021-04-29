@@ -130,10 +130,11 @@ augroup filetypes_folding
   autocmd Filetype python setlocal foldmethod=indent
 augroup END
 let g:markdown_folding=1
+nnoremap <silent> <Leader>df :set nofoldenable<CR>
 
 " Spell check options
 set spelllang=en,cjk
-nnoremap <silent> <Leader>sp :set spell!<cr>
+nnoremap <silent> <Leader>sp :set spell!<CR>
 
 " Go to notes index file
 nnoremap <Leader>nn :e $HOME/Documents/notes/index.md<CR>
