@@ -130,7 +130,8 @@ augroup filetypes_folding
   autocmd Filetype python setlocal foldmethod=indent
 augroup END
 let g:markdown_folding=1
-nnoremap <silent> <Leader>df :set nofoldenable<CR>
+set nofoldenable
+nnoremap <silent> <Leader>df :set foldenable!<CR>
 
 " Spell check options
 set spelllang=en,cjk

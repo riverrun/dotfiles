@@ -13,9 +13,9 @@ call plug#end()
 colorscheme NeoSolarized
 
 " Dispatch
-nnoremap <Leader>mtt :Dispatch mix test<CR>
-nnoremap <Leader>mft :Dispatch mix test %<CR>
-nnoremap <Leader>mlt :execute "Dispatch mix test %:" . line(".")<CR>
+nnoremap <Leader>mat :Dispatch! mix test<CR>
+nnoremap <Leader>mft :Dispatch! mix test %<CR>
+nnoremap <Leader>mlt :execute "Dispatch! mix test %:" . line(".")<CR>
 
 " Fugitive
 nnoremap gs :Gstatus<CR>
