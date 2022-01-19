@@ -5,7 +5,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
-Plug 'iCyMind/NeoSolarized'
+Plug 'overcache/NeoSolarized'
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 call plug#end()
 
