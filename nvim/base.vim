@@ -108,6 +108,7 @@ nnoremap <Leader>T :terminal<CR>
 " Bit of a hack, but this works as long as the terminal is the first buffer
 nnoremap <silent> <Leader>t :buffer 1<CR>
 tnoremap <Esc> <C-\><C-n>
+tnoremap <C-[> <C-\><C-n>
 autocmd TermOpen * setlocal scrollback=100000
 "autocmd TermEnter * setlocal scrolloff=0
 "autocmd TermLeave * setlocal scrolloff=6
@@ -119,6 +120,7 @@ augroup filetypes
   autocmd BufNewFile,BufRead *.pl set filetype=prolog
   autocmd Filetype python,sh,zsh,erlang,haskell,prolog setlocal shiftwidth=4 softtabstop=4
   autocmd FileType c setlocal softtabstop=8 shiftwidth=8 noexpandtab
+  autocmd FileType go setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
   autocmd FileType markdown setlocal textwidth=80
 augroup END
 
