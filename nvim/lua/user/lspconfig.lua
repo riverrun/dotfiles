@@ -74,7 +74,14 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 lspconfig.elixirls.setup({
-  cmd = { vim.loop.os_homedir() .. "/.elixir-ls/release/language_server.sh" }
+  cmd = { vim.loop.os_homedir() .. "/.elixir-ls/release/language_server.sh" },
+  -- default settings
+  settings = {
+    dialyzerEnabled = true,
+    fetchDeps = false,
+    enableTestLenses = false,
+    suggestSpecs = false,
+  },
 })
 lspconfig.gopls.setup({})
 lspconfig.pyright.setup({})

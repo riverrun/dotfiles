@@ -21,3 +21,9 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "*.go",
   command = "setlocal softtabstop=4 shiftwidth=4 noexpandtab"
 })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = group,
+  pattern = "*",
+  callback = vim.lsp.buf.formatting_sync
+})

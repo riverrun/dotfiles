@@ -16,10 +16,9 @@ map({ "i", "v" }, "<C-l>", "<Esc>")
 map("n", "H", "^")
 map("n", "L", "$")
 map("n", "M", "%")
--- map("i", "<C-j>", "<C-n>")
 
 -- help in new tab
-map("n", "<Leader>h", ":tab help<Space>")
+map("n", "<Leader>th", ":tab help<Space>")
 
 -- remap Y to be more like C and D
 map("n", "Y", "y$")
@@ -27,8 +26,6 @@ map("n", "Y", "y$")
 -- easier buffer navigation
 map("n", "<C-n>", ":bnext<CR>")
 map("n", "<C-p>", ":bprevious<CR>")
--- map("n", "<Tab>", ":bnext<CR>")
--- map("n", "<S-Tab>", ":bprevious<CR>")
 map("n", "<Leader>e", ":edit<Space>")
 map("n", "<Leader>b", ":buffers<CR>:buffer<Space>")
 map("n", "<Leader><Leader>", "<C-^>")
