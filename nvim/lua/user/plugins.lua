@@ -10,7 +10,7 @@ return require("packer").startup(function(use)
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-cmdline",
     "saadparwaiz1/cmp_luasnip",
-    },
+  },
   }
   use { "L3MON4D3/LuaSnip", tag = "v1.*" }
   use "rafamadriz/friendly-snippets"
@@ -18,6 +18,6 @@ return require("packer").startup(function(use)
   use "nvim-treesitter/nvim-treesitter"
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "lewis6991/gitsigns.nvim"
-  use { "akinsho/toggleterm.nvim", tag = "v1.*" }
+  use { "akinsho/toggleterm.nvim", tag = "*" }
   use "elixir-editors/vim-elixir"
 end)

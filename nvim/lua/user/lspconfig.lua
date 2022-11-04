@@ -2,7 +2,7 @@ local lsp_defaults = {
   flags = {
     debounce_text_changes = 150,
   },
-  capabilities = require("cmp_nvim_lsp").update_capabilities(
+  capabilities = require("cmp_nvim_lsp").default_capabilities(
     vim.lsp.protocol.make_client_capabilities()
   ),
   -- fix these errors
@@ -28,10 +28,10 @@ local sign = function(opts)
   })
 end
 
-sign({name = "DiagnosticSignError", text = "✘"})
-sign({name = "DiagnosticSignWarn", text = "▲"})
-sign({name = "DiagnosticSignHint", text = "⚑"})
-sign({name = "DiagnosticSignInfo", text = ""})
+sign({ name = "DiagnosticSignError", text = "✘" })
+sign({ name = "DiagnosticSignWarn", text = "▲" })
+sign({ name = "DiagnosticSignHint", text = "⚑" })
+sign({ name = "DiagnosticSignInfo", text = "" })
 
 vim.diagnostic.config({
   virtual_text = false,
