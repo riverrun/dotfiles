@@ -12,14 +12,21 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 
 vim.api.nvim_create_autocmd("FileType", {
   group = group,
-  pattern = {"*.py", "*.sh", "*.bash", "*.zsh", "*.erl", "*.pl"},
+  pattern = { "*.py", "*.sh", "*.bash", "*.zsh", "*.erl", "*.pl" },
   command = "setlocal shiftwidth=4 softtabstop=4"
+})
+
+-- not sure about defaults for golang
+vim.api.nvim_create_autocmd("FileType", {
+  group = group,
+  pattern = "*.go",
+  command = "setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab"
 })
 
 vim.api.nvim_create_autocmd("FileType", {
   group = group,
-  pattern = "*.go",
-  command = "setlocal softtabstop=4 shiftwidth=4 noexpandtab"
+  pattern = { "*.c", "*.h" },
+  command = "setlocal softtabstop=8 shiftwidth=8 noexpandtab"
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {

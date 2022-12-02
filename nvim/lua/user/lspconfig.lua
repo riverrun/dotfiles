@@ -73,6 +73,7 @@ vim.api.nvim_create_autocmd("User", {
   end
 })
 
+lspconfig.bashls.setup({})
 lspconfig.elixirls.setup({
   cmd = { vim.loop.os_homedir() .. "/.elixir-ls/release/language_server.sh" },
   -- default settings

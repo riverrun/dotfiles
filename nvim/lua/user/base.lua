@@ -9,3 +9,6 @@ vim.o.splitright = true
 vim.wo.cursorline = true
 vim.opt.mouse = "nv"
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.foldlevel = 1
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
