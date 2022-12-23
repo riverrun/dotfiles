@@ -32,5 +32,5 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = group,
   pattern = "*",
-  callback = vim.lsp.buf.formatting_sync
+  callback = function() vim.lsp.buf.format() end
 })

@@ -1,5 +1,14 @@
 local map = vim.keymap.set
 
+map("n", "<F5>", function()
+  vim.o.background = (vim.o.background == "dark") and "light" or "dark"
+  --  if vim.o.background == "dark" then
+  --    vim.o.background = "light"
+  --  else
+  --    vim.o.background = "dark"
+  --  end
+end)
+
 -- remap space as leader key
 map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
