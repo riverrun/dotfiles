@@ -86,7 +86,7 @@ lspconfig.elixirls.setup({
 })
 lspconfig.gopls.setup({})
 lspconfig.pyright.setup({})
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
   settings = {
     Lua = {
       runtime = {
