@@ -2,7 +2,8 @@ return require("packer").startup(function(use)
   use "wbthomason/packer.nvim"
   use "nvim-lua/plenary.nvim"
   use "nvim-lualine/lualine.nvim"
-  use "kyazdani42/nvim-web-devicons"
+  use "nvim-tree/nvim-tree.lua"
+  use "nvim-tree/nvim-web-devicons"
   use "neovim/nvim-lspconfig"
   use { "hrsh7th/nvim-cmp", requires = {
     "hrsh7th/cmp-nvim-lsp",
@@ -18,6 +19,7 @@ return require("packer").startup(function(use)
   use "nvim-treesitter/nvim-treesitter"
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "lewis6991/gitsigns.nvim"
+  use "tpope/vim-fugitive"
   use { "akinsho/toggleterm.nvim", tag = "*" }
   use "mbbill/undotree"
   use "elixir-editors/vim-elixir"

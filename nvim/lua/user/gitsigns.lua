@@ -22,10 +22,16 @@ gitsigns.setup {
       return "<Ignore>"
     end, { expr = true })
 
-    map('n', '<Leader>hb', function() gs.blame_line { full = true } end)
-    map('n', '<Leader>tb', gs.toggle_current_line_blame)
-    map('n', '<Leader>hd', gs.diffthis)
-    map('n', '<Leader>hD', function() gs.diffthis('~') end)
+    -- Actions
+    map("n", "<Leader>hs", gs.stage_hunk)
+    map("n", "<Leader>hr", gs.reset_hunk)
     map("n", "<Leader>hp", gs.preview_hunk)
+    map("n", "<Leader>hb", function() gs.blame_line { full = true } end)
+    map("n", "<Leader>tb", gs.toggle_current_line_blame)
+    map("n", "<Leader>hd", gs.diffthis)
+    map("n", "<Leader>hD", function() gs.diffthis("~") end)
+
+    -- Text object
+    map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
   end
 }

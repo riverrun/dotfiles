@@ -1,5 +1,5 @@
 require("toggleterm").setup {
-  size = 15,
+  size = 20,
   open_mapping = [[<C-\>]]
 }
 
@@ -19,3 +19,9 @@ vim.api.nvim_create_autocmd("TermOpen", {
   pattern = "term://*",
   callback = set_terminal_keymaps,
 })
+
+local map = vim.keymap.set
+
+map("n", "<Leader>tf", ":ToggleTerm direction=float<CR>")
+map("n", "<Leader>th", ":ToggleTerm direction=horizontal size=20<CR>")
+map("n", "<Leader>tv", ":ToggleTerm direction=vertical size=80<CR>")

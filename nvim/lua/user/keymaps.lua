@@ -22,7 +22,7 @@ map("n", "L", "$")
 map("n", "M", "%")
 
 -- help in new tab
-map("n", "<Leader>th", ":tab help<Space>")
+-- map("n", "<Leader>th", ":tab help<Space>")
 
 -- remap Y to be more like C and D
 map("n", "Y", "y$")
@@ -55,4 +55,8 @@ map("n", "<Leader>fb", "<cmd>Telescope buffers<CR>")
 map("n", "<Leader>fh", "<cmd>Telescope help_tags<CR>")
 
 -- undotree
-vim.keymap.set('n', '<Leader>u', vim.cmd.UndotreeToggle)
+map("n", "<Leader>u", vim.cmd.UndotreeToggle)
+
+-- fugitive
+-- map("n", "<Leader>gg", ":Git<Cr>")
+-- map("n", "<Leader>gl", ":Git log<Cr>")
