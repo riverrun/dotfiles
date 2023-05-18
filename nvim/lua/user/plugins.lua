@@ -19,7 +19,6 @@ return require("packer").startup(function(use)
   use "nvim-treesitter/nvim-treesitter"
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "lewis6991/gitsigns.nvim"
-  use "tpope/vim-fugitive"
   use { "akinsho/toggleterm.nvim", tag = "*" }
   use "mbbill/undotree"
   use "elixir-editors/vim-elixir"

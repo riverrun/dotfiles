@@ -1,7 +1,0 @@
-## Setup gnome terminal
-
-gsettings set org.gnome.desktop.interface cursor-blink false
-
-## Extensions
-
-Dash-to-panel and user themes

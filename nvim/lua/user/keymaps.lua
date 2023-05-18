@@ -21,20 +21,17 @@ map("n", "H", "^")
 map("n", "L", "$")
 map("n", "M", "%")
 
--- help in new tab
--- map("n", "<Leader>th", ":tab help<Space>")
-
 -- remap Y to be more like C and D
 map("n", "Y", "y$")
 
--- easier buffer navigation
+-- navigating buffers
 map("n", "<C-n>", ":bnext<CR>")
 map("n", "<C-p>", ":bprevious<CR>")
 map("n", "<Leader>e", ":edit<Space>")
 map("n", "<Leader>b", ":buffers<CR>:buffer<Space>")
 map("n", "<Leader><Leader>", "<C-^>")
 
--- split screens
+-- navigating split screens
 map("n", "<C-j>", "<C-w>w")
 map("n", "<C-k>", "<C-w>W")
 
@@ -56,7 +53,3 @@ map("n", "<Leader>fh", "<cmd>Telescope help_tags<CR>")
 
 -- undotree
 map("n", "<Leader>u", vim.cmd.UndotreeToggle)
-
--- fugitive
--- map("n", "<Leader>gg", ":Git<Cr>")
--- map("n", "<Leader>gl", ":Git log<Cr>")

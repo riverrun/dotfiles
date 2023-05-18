@@ -28,8 +28,7 @@ gitsigns.setup {
     map("n", "<Leader>hp", gs.preview_hunk)
     map("n", "<Leader>hb", function() gs.blame_line { full = true } end)
     map("n", "<Leader>tb", gs.toggle_current_line_blame)
-    map("n", "<Leader>hd", gs.diffthis)
-    map("n", "<Leader>hD", function() gs.diffthis("~") end)
+    map("n", "<Leader>hd", ":Gitsigns diffthis<Space>")
 
     -- Text object
     map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
