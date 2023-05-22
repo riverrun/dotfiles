@@ -5,8 +5,8 @@ map("n", "<F5>", function()
 end)
 
 -- remap space as leader key
-map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
-vim.g.mapleader = " "
+-- map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+-- vim.g.mapleader = " "
 
 -- remove Ctrl-z and s bindings, so that I don't hit them by mistake
 map("", "<C-z>", "<Nop>", { silent = true })
