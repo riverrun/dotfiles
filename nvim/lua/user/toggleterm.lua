@@ -22,6 +22,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
 
 local map = vim.keymap.set
 
-map("n", "<Leader>tf", ":ToggleTerm direction=float<CR>")
-map("n", "<Leader>th", ":ToggleTerm direction=horizontal size=20<CR>")
-map("n", "<Leader>tv", ":ToggleTerm direction=vertical size=80<CR>")
+map("n", "<Leader>tf", "<Cmd>ToggleTerm direction=float<CR>")
+map("n", "<Leader>th", "<Cmd>ToggleTerm direction=horizontal size=20<CR>")
+map("n", "<Leader>tv", "<Cmd>ToggleTerm direction=vertical size=80<CR>")

@@ -13,4 +13,4 @@ require("nvim-tree").setup({
   on_attach = on_attach,
 })
 
-vim.keymap.set("n", "<C-t>", ":NvimTreeFindFileToggle<CR>")
+vim.keymap.set("n", "<C-t>", "<Cmd>NvimTreeFindFileToggle<CR>")

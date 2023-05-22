@@ -31,6 +31,6 @@ gitsigns.setup {
     map("n", "<Leader>hd", ":Gitsigns diffthis<Space>")
 
     -- Text object
-    map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+    map({ "o", "x" }, "ih", ":<C-u>Gitsigns select_hunk<CR>")
   end
 }

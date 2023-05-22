@@ -16,8 +16,8 @@ ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 autoload -U compinit
 compinit -i -d "${ZSH_COMPDUMP}"
 
-# Solarized dir colors (comment out this line if using MacOS)
-eval `dircolors ~/.dircolors`
+# Solarized dir colors (uncomment this line if using Linux)
+#eval `dircolors ~/.dircolors`
 
 # Load the theme
 source "$ZSH/$ZSH_THEME.zsh-theme"
@@ -25,8 +25,14 @@ source "$ZSH/$ZSH_THEME.zsh-theme"
 # Enable Elixir shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-# Add asdf
-source /usr/local/opt/asdf/asdf.sh
+# uncomment if using MacOS
+#export GPG_TTY=$(tty)
+#eval "$(/opt/homebrew/bin/brew shellenv)"
+#. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
-# When using MacOS
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+# uncomment if using nvm
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+
+# update PATH if using MacOS - coreutils, curl, findutils, etc.
+#PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"

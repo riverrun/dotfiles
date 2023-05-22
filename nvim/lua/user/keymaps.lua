@@ -13,7 +13,7 @@ map("", "<C-z>", "<Nop>", { silent = true })
 map("", "s", "<Nop>", { silent = true })
 
 -- save all files using `S`
-map("n", "S", ":wa<CR>")
+map("n", "S", "<Cmd>wa<CR>")
 
 -- make some commonly used key bindings easier to reach
 map({ "i", "v" }, "<C-l>", "<Esc>")
@@ -25,10 +25,10 @@ map("n", "M", "%")
 map("n", "Y", "y$")
 
 -- navigating buffers
-map("n", "<C-n>", ":bnext<CR>")
-map("n", "<C-p>", ":bprevious<CR>")
+map("n", "<C-n>", "<Cmd>bnext<CR>")
+map("n", "<C-p>", "<Cmd>bprevious<CR>")
 map("n", "<Leader>e", ":edit<Space>")
-map("n", "<Leader>b", ":buffers<CR>:buffer<Space>")
+map("n", "<Leader>b", "<Cmd>buffers<CR>:buffer<Space>")
 map("n", "<Leader><Leader>", "<C-^>")
 
 -- navigating split screens
@@ -43,13 +43,26 @@ map("n", "N", "Nzz")
 map("n", "<C-l>", ":<C-u>nohlsearch<CR><C-l>", { silent = true })
 
 -- open notes index file
-map("n", "<Leader>nn", ":e $HOME/Documents/notes/index.md<CR>")
+map("n", "<Leader>nn", "<Cmd>e $HOME/Documents/notes/index.md<CR>")
 
 -- telescope
-map("n", "<Leader>ff", "<cmd>Telescope find_files<CR>")
-map("n", "<Leader>fg", "<cmd>Telescope live_grep<CR>")
-map("n", "<Leader>fb", "<cmd>Telescope buffers<CR>")
-map("n", "<Leader>fh", "<cmd>Telescope help_tags<CR>")
+map("n", "<Leader>ff", "<Cmd>Telescope find_files<CR>")
+map("n", "<Leader>fg", "<Cmd>Telescope live_grep<CR>")
+map("n", "<Leader>fb", "<Cmd>Telescope buffers<CR>")
+map("n", "<Leader>fh", "<Cmd>Telescope help_tags<CR>")
 
 -- undotree
 map("n", "<Leader>u", vim.cmd.UndotreeToggle)
+
+-- testing - may move this to a separate file
+-- maybe change the default to no line number
+local function location(opts)
+  local filename = vim.fn.expand("%")
+  opts = opts or { linenr = true }
+  local suffix = (opts.linenr == true) and ":" .. vim.fn.line(".") or ""
+  local file_and_line_nr = filename .. suffix
+  vim.fn.setreg('+', file_and_line_nr)
+end
+
+map("n", "<Leader>ll", location)
+map("n", "<Leader>lf", function() location({ linenr = false }) end)
