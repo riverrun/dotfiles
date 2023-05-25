@@ -1,5 +1,5 @@
 replace() {
-    ag -0 -l $1 | xargs -0 sed -i "s/$1/$2/g"
+    rg -0 -l $1 | xargs -0 sed -i "s/$1/$2/g"
 }
 
 umbrella_cmd() {
