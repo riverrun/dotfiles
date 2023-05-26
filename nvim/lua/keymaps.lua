@@ -4,10 +4,6 @@ map("n", "<F5>", function()
   vim.o.background = (vim.o.background == "dark") and "light" or "dark"
 end)
 
--- remap space as leader key
--- map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
--- vim.g.mapleader = " "
-
 -- remove Ctrl-z and s bindings, so that I don't hit them by mistake
 map("", "<C-z>", "<Nop>", { silent = true })
 map("", "s", "<Nop>", { silent = true })
