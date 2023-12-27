@@ -50,8 +50,7 @@ map("n", "<Leader>fh", "<Cmd>Telescope help_tags<CR>")
 -- undotree
 map("n", "<Leader>u", vim.cmd.UndotreeToggle)
 
--- testing - may move this to a separate file
--- maybe change the default to no line number
+-- test helper to get filename and (optionally) line number
 local function location(opts)
   local filename = vim.fn.expand("%")
   opts = opts or { linenr = true }
