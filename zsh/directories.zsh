@@ -9,7 +9,6 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-alias -- -='cd -'
 
 alias 1='cd -'
 alias 2='cd -2'
@@ -31,6 +30,6 @@ alias rd=rmdir
 alias d='dirs -v | head -10'
 
 function cdnew() {
-  mkdir -p $1
-  cd $1
+    mkdir -p $1
+    cd $1
 }

@@ -5,7 +5,7 @@ export ZSH=$HOME/.config/zsh
 ZSH_THEME="custom"
 
 for config_file ($ZSH/*.zsh); do
-  source $config_file
+    source $config_file
 done
 setopt extended_glob
 
@@ -16,23 +16,32 @@ ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 autoload -U compinit
 compinit -i -d "${ZSH_COMPDUMP}"
 
-# Solarized dir colors (uncomment this line if using Linux)
-#eval `dircolors ~/.dircolors`
-
 # Load the theme
 source "$ZSH/$ZSH_THEME.zsh-theme"
 
 # Enable Elixir shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-# uncomment if using MacOS
-#export GPG_TTY=$(tty)
-#eval "$(/opt/homebrew/bin/brew shellenv)"
-#. /opt/homebrew/opt/asdf/libexec/asdf.sh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# uncomment if using nvm
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+# with fzf, use fd instead of find
+export FZF_DEFAULT_COMMAND='fd --type file --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-# update PATH if using MacOS - coreutils, curl, findutils, etc.
-#PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export GPG_TTY=$(tty)
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+
+    PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+    PATH="/opt/homebrew/opt/curl/bin:$PATH"
+    PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
+    PATH="/opt/homebrew/opt/libtool/libexec/gnubin:$PATH"
+    PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
+    PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+    PATH="/opt/homebrew/opt/openssh/bin:$PATH"
+    PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"
+fi

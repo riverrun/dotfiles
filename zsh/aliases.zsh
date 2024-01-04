@@ -12,22 +12,11 @@ else
     alias history='fc -l 1'
 fi
 
-# List direcory contents
-#alias ls='ls --color=auto'
-#alias la='ls -A'
-#alias lr='ls -R'
-
 # use exa instead of ls
 alias ls='exa'
 alias la='exa -a'
 alias lr='exa -R'
 alias ltree='exa -T'
-
-# archlinux aliases
-alias pupg='sudo pacman -Syu'
-alias pins='sudo pacman -S'
-alias editmirror='sudo nvim -d /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist'
-alias newmirror='sudo mv /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist'
 
 # git aliases
 alias g='noglob git'

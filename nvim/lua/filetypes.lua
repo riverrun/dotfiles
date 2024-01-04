@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 
 vim.api.nvim_create_autocmd("FileType", {
   group = group,
-  pattern = { "python", "sh", "erlang", "prolog" },
+  pattern = { "python", "sh", "zsh", "erlang", "prolog" },
   command = "setlocal shiftwidth=4 softtabstop=4"
 })
 

@@ -14,6 +14,13 @@ return {
 
     require("nvim-tree").setup({
       on_attach = on_attach,
+      actions = {
+        open_file = {
+          window_picker = {
+            enable = false
+          },
+        },
+      },
     })
 
     vim.keymap.set("n", "<C-t>", "<Cmd>NvimTreeFindFileToggle<CR>")

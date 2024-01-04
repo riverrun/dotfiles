@@ -9,7 +9,7 @@ map("", "<C-z>", "<Nop>", { silent = true })
 map("", "s", "<Nop>", { silent = true })
 
 -- save all files using `S`
-map("n", "S", "<Cmd>wa<CR>")
+map("n", "S", "<Cmd>wa<CR>", { silent = true })
 
 -- make some commonly used key bindings easier to reach
 map({ "i", "v" }, "<C-l>", "<Esc>")
@@ -38,6 +38,12 @@ map("n", "N", "Nzz")
 -- cancel search highlighting
 map("n", "<C-l>", ":<C-u>nohlsearch<CR><C-l>", { silent = true })
 
+-- quickfix lists
+map("n", "[q", "<Cmd>cprev<CR>")
+map("n", "q]", "<Cmd>cnext<CR>")
+map("n", "<Leader>co", "<Cmd>copen<CR>")
+map("n", "<Leader>cc", "<Cmd>cclose<CR>")
+
 -- open notes index file
 map("n", "<Leader>nn", "<Cmd>e $HOME/Documents/notes/index.md<CR>")
 
@@ -50,14 +56,14 @@ map("n", "<Leader>fh", "<Cmd>Telescope help_tags<CR>")
 -- undotree
 map("n", "<Leader>u", vim.cmd.UndotreeToggle)
 
--- test helper to get filename and (optionally) line number
-local function location(opts)
+-- test helper to run tests for filename and (optionally) line number
+local function run_tests(opts)
   local filename = vim.fn.expand("%")
   opts = opts or { linenr = true }
   local suffix = (opts.linenr == true) and ":" .. vim.fn.line(".") or ""
   local file_and_line_nr = filename .. suffix
-  vim.fn.setreg('+', file_and_line_nr)
+  require("utils.async_make").make("mix test" .. " " .. file_and_line_nr)
 end
 
-map("n", "<Leader>ll", location)
-map("n", "<Leader>lf", function() location({ linenr = false }) end)
+map("n", "<Leader>ll", run_tests)
+map("n", "<Leader>lf", function() run_tests({ linenr = false }) end)
