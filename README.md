@@ -13,6 +13,8 @@ rm -rf ~/.config/zsh
 ln -s ~/develop/dotfiles/zsh ~/.config/zsh
 rm ~/.zshrc
 ln -s ~/develop/dotfiles/.zshrc ~/.zshrc
+rm ~/.psqlrc
+ln -s ~/develop/dotfiles/.psqlrc ~/.psqlrc
 ```
 
 ## neovim
@@ -27,11 +29,9 @@ npm install -g bash-language-server
 
 for tree-sitter, need to install language parsers
 
-:TSInstall <language_to_install>
-
-also see :TSInstallInfo
-
-bash, c, elixir, go, lua, markdown, python, vim
+```
+TSInstall bash c elixir go help lua markdown python vim
+```
 
 ### Elixir
 

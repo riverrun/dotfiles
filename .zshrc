@@ -44,4 +44,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
     PATH="/opt/homebrew/opt/openssh/bin:$PATH"
     PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    . /usr/share/fzf/key-bindings.zsh
+    . /usr/share/fzf/completion.zsh
 fi

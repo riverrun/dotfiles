@@ -92,6 +92,7 @@ return {
         },
       })
       lspconfig.gopls.setup({})
+      lspconfig.marksman.setup({})
       lspconfig.pyright.setup({})
       lspconfig.lua_ls.setup({
         settings = {

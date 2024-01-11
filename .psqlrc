@@ -1,0 +1,6 @@
+\set VERBOSITY verbose
+\set HISTCONTROL ignoredups
+\set HISTSIZE 2000
+\x auto
+\set PROMPT1 '%M:%> %n@%/ %R %[%033[1m%]%#%[%033[0m%]%x '
+\set PROMPT2 '%M %n@%/ %[%033[1;31;40m%]%R%[%033[0m%] $# '
