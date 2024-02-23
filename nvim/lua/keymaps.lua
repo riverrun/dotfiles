@@ -41,7 +41,7 @@ map("n", "<C-l>", ":<C-u>nohlsearch<CR><C-l>", { silent = true })
 -- quickfix lists
 map("n", "[q", "<Cmd>cprev<CR>")
 map("n", "q]", "<Cmd>cnext<CR>")
-map("n", "<Leader>co", "<Cmd>copen<CR>")
+map("n", "<Leader>co", "<Cmd>copen 20<CR>")
 map("n", "<Leader>cc", "<Cmd>cclose<CR>")
 
 -- open notes index file
@@ -52,9 +52,6 @@ map("n", "<Leader>ff", "<Cmd>Telescope find_files<CR>")
 map("n", "<Leader>fg", "<Cmd>Telescope live_grep<CR>")
 map("n", "<Leader>fb", "<Cmd>Telescope buffers<CR>")
 map("n", "<Leader>fh", "<Cmd>Telescope help_tags<CR>")
-
--- undotree
-map("n", "<Leader>u", vim.cmd.UndotreeToggle)
 
 -- test helper to run tests for filename and (optionally) line number
 local function run_tests(opts)

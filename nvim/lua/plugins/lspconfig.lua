@@ -70,7 +70,7 @@ return {
           bufmap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
           bufmap("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>")
           bufmap("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>")
-          bufmap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
+          -- bufmap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
           bufmap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>")
           bufmap("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
           bufmap("x", "<F4>", "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
@@ -81,6 +81,7 @@ return {
       })
 
       lspconfig.bashls.setup({})
+      lspconfig.denols.setup({})
       lspconfig.elixirls.setup({
         cmd = { vim.loop.os_homedir() .. "/.elixir-ls/release/language_server.sh" },
         -- default settings
@@ -92,8 +93,6 @@ return {
         },
       })
       lspconfig.gopls.setup({})
-      lspconfig.marksman.setup({})
-      lspconfig.pyright.setup({})
       lspconfig.lua_ls.setup({
         settings = {
           Lua = {
@@ -112,6 +111,9 @@ return {
           }
         }
       })
+      lspconfig.marksman.setup({})
+      lspconfig.pyright.setup({})
+      lspconfig.tsserver.setup({})
     end
   }
 }

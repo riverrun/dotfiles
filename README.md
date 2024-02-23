@@ -26,6 +26,7 @@ pip3 install pynvim
 npm install -g neovim
 npm install -g pyright
 npm install -g bash-language-server
+brew install marksman
 
 for tree-sitter, need to install language parsers
 
