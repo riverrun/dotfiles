@@ -21,6 +21,7 @@ alias 8='cd -8'
 alias 9='cd -9'
 
 alias cdd='cd $HOME/develop'
+alias cdscripts='cd $HOME/develop/scripts'
 alias cdwork='cd $HOME/develop/work'
 alias cdpy='cd $HOME/develop/python'
 alias cdex='cd $HOME/develop/elixir'

@@ -81,7 +81,6 @@ return {
       })
 
       lspconfig.bashls.setup({})
-      lspconfig.denols.setup({})
       lspconfig.elixirls.setup({
         cmd = { vim.loop.os_homedir() .. "/.elixir-ls/release/language_server.sh" },
         -- default settings
@@ -92,7 +91,6 @@ return {
           suggestSpecs = false,
         },
       })
-      lspconfig.gopls.setup({})
       lspconfig.lua_ls.setup({
         settings = {
           Lua = {
@@ -112,6 +110,7 @@ return {
         }
       })
       lspconfig.marksman.setup({})
+      lspconfig.prolog_ls.setup({})
       lspconfig.pyright.setup({})
       lspconfig.tsserver.setup({})
     end

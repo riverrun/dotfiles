@@ -53,6 +53,9 @@ map("n", "<Leader>fg", "<Cmd>Telescope live_grep<CR>")
 map("n", "<Leader>fb", "<Cmd>Telescope buffers<CR>")
 map("n", "<Leader>fh", "<Cmd>Telescope help_tags<CR>")
 
+-- format Python files
+map("n", "<Leader>pp", "<Cmd>!black --quiet --line-length 120 %<CR>", { silent = true })
+
 -- test helper to run tests for filename and (optionally) line number
 local function run_tests(opts)
   local filename = vim.fn.expand("%")

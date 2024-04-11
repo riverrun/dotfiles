@@ -18,13 +18,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("FileType", {
   group = group,
-  pattern = "go",
-  command = "setlocal softtabstop=8 shiftwidth=8 noexpandtab"
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  group = group,
-  pattern = "c",
+  pattern = { "c", "go" },
   command = "setlocal softtabstop=8 shiftwidth=8 noexpandtab"
 })
 
