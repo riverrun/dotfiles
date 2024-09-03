@@ -12,11 +12,11 @@ else
     alias history='fc -l 1'
 fi
 
-# use exa instead of ls
-alias ls='exa'
-alias la='exa -a'
-alias lr='exa -R'
-alias ltree='exa -T'
+# use eza instead of ls
+alias ls='eza'
+alias la='eza -a'
+alias lr='eza -R'
+alias ltree='eza -T'
 
 # git aliases
 alias g='noglob git'
@@ -27,3 +27,4 @@ alias gpu='git push origin HEAD'
 alias rg='noglob rg'
 alias rsync='noglob rsync'
 alias v=nvim
+alias jwt="jq -R 'split(\".\") | .[1] | @base64d | fromjson' <<< $1"

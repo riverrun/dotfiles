@@ -18,3 +18,4 @@ git config --global alias.ci commit
 git config --global alias.st status
 git config --global alias.lg 'log --graph --pretty="format:%C(auto)%h%d %s - %C(#b58900)%cn %cr"'
 git config --global init.defaultBranch main
+git config --global diff.algorithm histogram
