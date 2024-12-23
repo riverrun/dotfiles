@@ -22,6 +22,7 @@ alias ltree='eza -T'
 alias g='noglob git'
 alias git='noglob git'
 alias gpu='git push origin HEAD'
+alias gpuf='git push origin HEAD --force-with-lease'
 
 # misc aliases
 alias rg='noglob rg'

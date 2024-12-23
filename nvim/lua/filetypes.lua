@@ -22,8 +22,8 @@ vim.api.nvim_create_autocmd("FileType", {
   command = "setlocal softtabstop=8 shiftwidth=8 noexpandtab"
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("FileType", {
   group = group,
-  pattern = "*",
-  callback = function() vim.lsp.buf.format() end
+  pattern = { "markdown", "text" },
+  command = "setlocal linebreak spell"
 })
