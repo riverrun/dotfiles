@@ -31,7 +31,8 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export GPG_TTY=$(tty)
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+    export ASDF_DATA_DIR="$HOME/.asdf"
 
     export NVM_DIR="$HOME/.nvm"
     [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
@@ -45,6 +46,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     PATH="/opt/homebrew/opt/openssh/bin:$PATH"
     PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"
     PATH="$HOME/go/bin:$PATH"
+    PATH="$ASDF_DATA_DIR/shims:$PATH"
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     . /usr/share/fzf/key-bindings.zsh
     . /usr/share/fzf/completion.zsh

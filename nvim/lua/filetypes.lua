@@ -1,6 +1,6 @@
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
 
 local group = vim.api.nvim_create_augroup("Filetypes", { clear = true })
 
@@ -25,5 +25,5 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
   group = group,
   pattern = { "markdown", "text" },
-  command = "setlocal linebreak spell"
+  command = "setlocal linebreak"
 })

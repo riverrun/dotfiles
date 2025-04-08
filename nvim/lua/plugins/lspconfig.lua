@@ -8,28 +8,18 @@ return {
     config = function()
       local lspconfig = require("lspconfig")
 
-      local sign = function(opts)
-        vim.fn.sign_define(opts.name, {
-          texthl = opts.name,
-          text = opts.text,
-          numhl = ""
-        })
-      end
-
-      sign({ name = "DiagnosticSignError", text = "✘" })
-      sign({ name = "DiagnosticSignWarn", text = "▲" })
-      sign({ name = "DiagnosticSignHint", text = "⚑" })
-      sign({ name = "DiagnosticSignInfo", text = "" })
-
       vim.diagnostic.config({
-        virtual_text = false,
-        severity_sort = true,
-        float = {
-          border = "rounded",
-          source = true,
-          header = "",
-          prefix = "",
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = "✘",
+            [vim.diagnostic.severity.WARN] = "▲",
+            [vim.diagnostic.severity.HINT] = "⚑",
+            [vim.diagnostic.severity.INFO] = "",
+          },
         },
+        virtual_lines = {
+          current_line = true,
+        }
       })
 
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -52,7 +42,7 @@ return {
       })
 
       lspconfig.bashls.setup({})
-      lspconfig.denols.setup({})
+      -- lspconfig.denols.setup({})
       lspconfig.elixirls.setup({
         cmd = { vim.uv.os_homedir() .. "/.elixir-ls/release/language_server.sh" },
         -- default settings
@@ -86,6 +76,7 @@ return {
       lspconfig.pyright.setup({})
       lspconfig.ts_ls.setup({})
 
+      -- maybe move this to a separate file
       require("conform").setup({
         formatters_by_ft = {
           python = { "black" },

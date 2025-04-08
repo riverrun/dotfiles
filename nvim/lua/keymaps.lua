@@ -50,11 +50,7 @@ map("n", "<Leader>nn", "<Cmd>e $HOME/Documents/notes/index.md<CR>")
 map("n", "<Leader>xl", "<Cmd>.lua<CR>")
 map("v", "<Leader>xl", ":.lua<CR>")
 
-local function toggle_spell_check()
-  vim.opt.spell = not (vim.opt.spell:get())
-end
-
-vim.keymap.set("n", "<Leader>s", toggle_spell_check)
+vim.keymap.set("n", "<Leader>s", function() vim.o.spell = not vim.o.spell end)
 
 -- test helper to run tests for filename and (optionally) line number
 -- work out a better way of running tests
