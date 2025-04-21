@@ -3,7 +3,6 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
-      "stevearc/conform.nvim",
     },
     config = function()
       local lspconfig = require("lspconfig")
@@ -36,15 +35,13 @@ return {
           bufmap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
           bufmap("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>")
           bufmap("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>")
-          bufmap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
-          bufmap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
         end
       })
 
       lspconfig.bashls.setup({})
       -- lspconfig.denols.setup({})
       lspconfig.elixirls.setup({
-        cmd = { vim.uv.os_homedir() .. "/.elixir-ls/release/language_server.sh" },
+        cmd = { os.getenv("HOME") .. "/.elixir-ls/release/language_server.sh" },
         -- default settings
         settings = {
           dialyzerEnabled = true,
@@ -75,17 +72,6 @@ return {
       lspconfig.prolog_ls.setup({})
       lspconfig.pyright.setup({})
       lspconfig.ts_ls.setup({})
-
-      -- maybe move this to a separate file
-      require("conform").setup({
-        formatters_by_ft = {
-          python = { "black" },
-        },
-        format_on_save = {
-          lsp_format = "fallback",
-          timeout_ms = 500,
-        }
-      })
     end
   }
 }

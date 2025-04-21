@@ -20,8 +20,6 @@ map("n", "Y", "y$")
 -- navigating buffers
 map("n", "<C-p>", "<Cmd>bprevious<CR>")
 map("n", "<C-n>", "<Cmd>bnext<CR>")
-map("n", "[b", "<Cmd>bprevious<CR>")
-map("n", "]b", "<Cmd>bnext<CR>")
 map("n", "<Leader>e", ":edit<Space>")
 map("n", "<Leader>b", "<Cmd>buffers<CR>:buffer<Space>")
 map("n", "<Leader><Leader>", "<C-^>")
@@ -38,8 +36,6 @@ map("n", "N", "Nzz")
 map("n", "<C-l>", ":<C-u>nohlsearch<CR><C-l>", { silent = true })
 
 -- quickfix lists
-map("n", "[q", "<Cmd>cprev<CR>")
-map("n", "]q", "<Cmd>cnext<CR>")
 map("n", "<Leader>co", "<Cmd>copen 20<CR>")
 map("n", "<Leader>cc", "<Cmd>cclose<CR>")
 
@@ -50,7 +46,11 @@ map("n", "<Leader>nn", "<Cmd>e $HOME/Documents/notes/index.md<CR>")
 map("n", "<Leader>xl", "<Cmd>.lua<CR>")
 map("v", "<Leader>xl", ":.lua<CR>")
 
-vim.keymap.set("n", "<Leader>s", function() vim.o.spell = not vim.o.spell end)
+-- format Python files
+map("n", "<Leader>pp", "<Cmd>!black --quiet --line-length 120 %<CR>", { silent = true })
+
+-- toggle spell check
+map("n", "<Leader>s", function() vim.o.spell = not vim.o.spell end)
 
 -- test helper to run tests for filename and (optionally) line number
 -- work out a better way of running tests

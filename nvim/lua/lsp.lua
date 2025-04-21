@@ -1,5 +1,5 @@
-vim.lsp.config.elixirls = {
-  cmd = { vim.uv.os_homedir() .. "/.elixir-ls/release/language_server.sh" },
+vim.lsp.config("elixirls", {
+  cmd = { os.getenv("HOME") .. "/.elixir-ls/release/language_server.sh" },
   -- default settings
   settings = {
     dialyzerEnabled = true,
@@ -7,9 +7,9 @@ vim.lsp.config.elixirls = {
     enableTestLenses = false,
     suggestSpecs = false,
   }
-}
+})
 
-vim.lsp.config.lua_ls = {
+vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
       runtime = {
@@ -26,7 +26,7 @@ vim.lsp.config.lua_ls = {
       }
     }
   }
-}
+})
 
 vim.lsp.enable({ "bashls", "elixirls", "lua_ls", "marksman", "pyright", "ts_ls" })
 
@@ -44,11 +44,11 @@ vim.diagnostic.config({
   }
 })
 
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(ev)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-    end
-  end,
-})
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--   callback = function(ev)
+--     local client = vim.lsp.get_client_by_id(ev.data.client_id)
+--     if client:supports_method('textDocument/completion') then
+--       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+--     end
+--   end,
+-- })
