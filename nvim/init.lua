@@ -23,6 +23,5 @@ require("lazy").setup("plugins")
 require "base"
 require "filetypes"
 require "keymaps"
--- require "lsp"
 require "terminal"
 require "utils/async_make"

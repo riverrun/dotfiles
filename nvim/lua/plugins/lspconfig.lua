@@ -1,12 +1,7 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-    },
     config = function()
-      local lspconfig = require("lspconfig")
-
       vim.diagnostic.config({
         signs = {
           text = {
@@ -38,9 +33,7 @@ return {
         end
       })
 
-      lspconfig.bashls.setup({})
-      -- lspconfig.denols.setup({})
-      lspconfig.elixirls.setup({
+      vim.lsp.config("elixirls", {
         cmd = { os.getenv("HOME") .. "/.elixir-ls/release/language_server.sh" },
         -- default settings
         settings = {
@@ -50,7 +43,7 @@ return {
           suggestSpecs = false,
         },
       })
-      lspconfig.lua_ls.setup({
+      vim.lsp.config("lua_ls", {
         settings = {
           Lua = {
             runtime = {
@@ -68,10 +61,8 @@ return {
           }
         }
       })
-      lspconfig.marksman.setup({})
-      lspconfig.prolog_ls.setup({})
-      lspconfig.pyright.setup({})
-      lspconfig.ts_ls.setup({})
+
+      vim.lsp.enable({ "bashls", "elixirls", "denols", "lua_ls", "marksman", "pyright", "ts_ls" })
     end
   }
 }
